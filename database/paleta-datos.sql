@@ -3,6 +3,9 @@
 
 BEGIN;
 
+-- ss
+
+
 INSERT INTO club (id, nombre, direccion, codigopostal, telefono, email, notas, 
 localidad_id, provincia_id,website, urlgooglemaps, lastmodifieduser)
 VALUES
@@ -252,46 +255,63 @@ VALUES
 
 
   
---Equipo son por torneo
+-- Equipo son por torneo
+
+--1 CUBA A
+--2 CUBA B
+--3 Esteban Echeverría B
+--4 WILDE
+--5 CIUDAD
+--6 CHICAGO
+--7 URQUIZA
+--8 BELGRANO
 
 INSERT INTO equipo (id, nombre, club_id, torneo_id, lastmodifieduser)
 VALUES
 
+  -- 1
   (nextval('sequence_id'),'CUBA A',
   (select id from club 		where nombre='Club Universitario de Buenos Aires'),
   (select id from torneo 	where nombre='Apertura' and anio=2024 limit 1),
   (select id from users where username='root')),
 
+	-- 2
   (nextval('sequence_id'),'CUBA B',
   (select id from club where nombre='Club Universitario de Buenos Aires'),
   (select id from torneo 	where nombre='Apertura' and anio=2024 limit 1),
   (select id from users where username='root')),
   
+  	-- 3
   (nextval('sequence_id'),'Esteban Echeverría B',
   (select id from club where nombre like 'Esteban%'),
   (select id from torneo 	where nombre='Apertura' and anio=2024 limit 1),
   (select id from users where username='root')),
   
+  -- 4
   (nextval('sequence_id'),'Wilde D',
   (select id from club where nombre like '%Wilde%'),
   (select id from torneo 	where nombre='Apertura' and anio=2024 limit 1),
   (select id from users where username='root')),
   
+  -- 5
   (nextval('sequence_id'),'Ciudad de Buenos Aires C',
   (select id from club where nombre like '%Ciudad de%'),
   (select id from torneo 	where nombre='Apertura' and anio=2024 limit 1),
   (select id from users where username='root')),
   
+  -- 6
   (nextval('sequence_id'),'Chicago A',
   (select id from club where nombre like '%Chicago%'),
   (select id from torneo 	where nombre='Apertura' and anio=2024 limit 1),
   (select id from users where username='root')),
   
+  -- 7
   (nextval('sequence_id'),'Urquiza B',
   (select id from club where nombre like '%Urquiza%'),
   (select id from torneo 	where nombre='Apertura' and anio=2024 limit 1),
   (select id from users where username='root')), 
   
+  -- 8
   (nextval('sequence_id'),'Belgrano D',
   (select id from club where nombre like '%Belgrano%'),
   (select id from torneo 	where nombre='Apertura' and anio=2024 limit 1),
@@ -447,6 +467,10 @@ VALUES
   (select id from equipo				where 		nombre like 'Belgrano%'),
   (select id from users where username='root'));
   
+
+
+SELECT id FROM fecha_torne WHERE etapa_torneo=(select id from etapa_torneo where nombre like 'Clasific%') and torneo = (select id from torneo where nombre = 'Apertura') AND orden=1
+
 
 
  INSERT INTO fecha_torneo (id,	etapa_torneo_id, torneo_id, orden, dia, dia_alternativo, hora, lastmodifieduser)
