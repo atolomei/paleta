@@ -1,57 +1,40 @@
 package io.paleta;
 
 
-
+import io.paleta.logging.Logger;
 import io.paleta.model.Club;
+import jakarta.annotation.PostConstruct;
 
- 
+import org.springframework.boot.Banner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
+
+@SpringBootApplication
+@ComponentScan({"io.paleta"})
 public class PaletaApplication {
 
+	static private Logger std_logger = Logger.getLogger("StartupLogger");
+	
+	@SuppressWarnings("unused")
+	static private Logger logger = Logger.getLogger(PaletaApplication.class.getName());
+
+	static public String[] cmdArgs = null;
+	
 	public static void main(String[] args) {
-		
-		int a;
-		long c;
-		byte b;
-		
-		
-		
-		s.toLowerCase();
-		
-		
-		
-		
-		Club club = new Club();
-		
-		
-		
-		
-		club.setNombre("CUBA");
-		
-		System.out.print( club.getNombre());
-		
-		
-		
-		
-		
-		
+
+		SpringApplication application = new SpringApplication(PaletaApplication.class);
+		application.setBannerMode(Banner.Mode.OFF);
+		cmdArgs = args;
+		application.run(args);
 		
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	public PaletaApplication() {
 	}

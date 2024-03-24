@@ -15,18 +15,24 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 
-
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class PaletaObject extends JsonObject {
 
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	
+	@Column(name="created")
 	private OffsetDateTime created;
 	
-	
+	@Column(name="lastmodified")
 	private OffsetDateTime lastModified;
 	
-	private Usuario lastModifiedUser;
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Usuario.class)
+	@JoinColumn(name = "user_id", nullable=false) 
+	private Usuario lastModifidUser;
 	
 	
 	public PaletaObject() {}

@@ -12,22 +12,22 @@ import jakarta.persistence.Table;
 @Table(name = "club")
 public class Club extends PaletaObject {
 
-	
+	@Column(name="nombre")
 	private String nombre;
 	
-	
+	@Column(name="direccion")
 	private String direccion;
 	
-	
+	@Column(name="codigoPostal")
 	private String codigoPostal;
 	
-	
+	@Column(name="telefono")
 	private String telefono;
 	
-	
+	@Column(name="email")
 	private String email;
 	
-	
+	@Column(name="notas")
 	private String notas;
 	
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Provincia.class)
