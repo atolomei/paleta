@@ -12,7 +12,6 @@ public class Provincia extends PaletaObject {
 	private String nombre;
 
 	
-	
 	public Provincia() {
 	}
 	

@@ -30,9 +30,10 @@ public class PaletaObject extends JsonObject {
 	@Column(name="lastmodified")
 	private OffsetDateTime lastModified;
 	
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Usuario.class)
-	@JoinColumn(name = "user_id", nullable=false) 
-	private Usuario lastModifidUser;
+	//@ManyToOne(fetch = FetchType.LAZY, targetEntity = Usuario.class)
+	//@JoinColumn(name = "lastModifiedUser", nullable=true) 
+	
+	//private volatile Usuario lastModifiedUser;
 	
 	
 	public PaletaObject() {}
@@ -63,11 +64,12 @@ public class PaletaObject extends JsonObject {
 	}
 
 	public Usuario getLastModifidUser() {
-		return lastModifidUser;
+		//return lastModifiedUser;
+		return null;
 	}
 
 	public void setLastModifidUser(Usuario lastModifidUser) {
-		this.lastModifidUser = lastModifidUser;
+		//this.lastModifiedUser = lastModifidUser;
 	}
 
 	

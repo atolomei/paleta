@@ -205,8 +205,18 @@
 		  <dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-core</artifactId>
-		    <version>5.4.23.Final</version>
+		    <version> 6.4.4.Final</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-entitymanager</artifactId>
+    <version>5.6.15.Final</version>
+</dependency>
+
+
+		
 
 		
 	<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
