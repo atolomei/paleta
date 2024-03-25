@@ -8,7 +8,7 @@ public class PaletaDemoClases {
 	 */
 	public static void main(String[] args) {
 
-		Localidad caba = new Localidad("caba");
+		Localidad caba = new Localidad("Ciudad de Buenos Aires");
 		Club cuba = new Club("CUBA");
 
 		
