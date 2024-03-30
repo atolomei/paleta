@@ -2,7 +2,7 @@ package io.paleta.test.general;
 
 public class Localidad {
 
-	String nombre;
+	private String nombre;
 	
 	public Localidad (String nombre) {
 		this.nombre=nombre;

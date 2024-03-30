@@ -8,16 +8,29 @@ public class PaletaDemoClases {
 	 */
 	public static void main(String[] args) {
 
-		Localidad caba = new Localidad("Ciudad de Buenos Aires");
-		Club cuba = new Club("CUBA");
+		Localidad a;
+		Club c;
+		
+		
+		a = new Localidad("Ciudad de Buenos Aires");
+		c = new Club("CUBA");
 
 		
-		cuba.setLocalidad(caba);
-		
-		System.out.println (cuba.getNombre());
 		
 		
-		System.out.println (cuba.toString());
+		c.setLocalidad(a);
+		
+		System.out.println (c.getNombre());
+		
+		
+		Localidad loca= c.getLocalidad();
+		String locaNombre = loca.getNombre();
+		
+		System.out.println (locaNombre);
+		
+		
+		
+		System.out.println (c.toString());
 		
 		
 		

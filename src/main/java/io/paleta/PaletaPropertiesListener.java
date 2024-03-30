@@ -50,14 +50,15 @@ public class PaletaPropertiesListener implements ApplicationListener<Application
 		    props.put("server.error.whitelabel.enabled", "false");
 		    props.put("spring.main.lazy-initialization", "false");
 		    props.put("spring.output.ansi.enabled", "DETECT");
-		    
-		    props.put("server.compression.enabled", "true");
-		    props.put("server.compression.mime-types", "text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json");
-		    props.put("server.compression.min-response-size", "1024");
-		    props.put("spring.resources.cache.cachecontrol.max-age", "120");
-		    props.put("spring.resources.cache.cachecontrol.must-revalidate", "true");
-		    props.put("spring.servlet.multipart.file-size-threshold", "24KB");
-		    
+		    props.put("server.error.whitelabel.enabled", "false");
+
+
+		    //props.put("server.compression.enabled", "true");
+		    //props.put("server.compression.mime-types", "text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json");
+		    //props.put("server.compression.min-response-size", "1024");
+		    //props.put("spring.resources.cache.cachecontrol.max-age", "120");
+		    //props.put("spring.resources.cache.cachecontrol.must-revalidate", "true");
+		    //props.put("spring.servlet.multipart.file-size-threshold", "24KB");
 		    
 		    environment.getPropertySources().addFirst(new PropertiesPropertySource("paletaProps", props));
 		    
