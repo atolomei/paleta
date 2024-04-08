@@ -12,8 +12,9 @@ public class Categoria extends PaletaObject {
 	private String nombre;
 	
 	/**
-	 * 	Hibernate expects entities to have a no-arg constructor,
-		though it does not necessarily have to be public. 
+	 * 	<p>Hibernate expects entities to have a no-arg constructor,
+		though it does not necessarily have to be public.
+		</p> 
 	 */
 	public Categoria() {
 		

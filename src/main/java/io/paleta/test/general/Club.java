@@ -6,15 +6,19 @@ public class Club {
 	private String direccion;
 	private Localidad localidad;
 	
-	
-
 	/** 
 	 * Constructor 
 	 * */
-	
+	public Club() {
+	}
+
 	public Club(String nombre) {
 		this.nombre=nombre;
 	}
+	
+	
+	// -----------------
+	
 	
 	public String getNombre() {
 		return nombre;

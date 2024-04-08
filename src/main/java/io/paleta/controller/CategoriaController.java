@@ -1,44 +1,82 @@
 package io.paleta.controller;
 
+import java.util.Optional;
+
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import io.paleta.db.CategoriaDBService;
 import io.paleta.logging.Logger;
 import io.paleta.model.Categoria;
 import io.paleta.repository.CategoriaRepository;
 
 /**
- * <p>
  * 
+ * 
+ * <p>
+ *  CRUD
+ *  
+ *  list
+ *   get
+ *  
  * </p>
  */
 @RestController
+@RequestMapping(value = "/categoria")
 public class CategoriaController {
 		
+	@SuppressWarnings("unused")
 	static private Logger logger = Logger.getLogger(CategoriaController.class.getName());
 	
-	  private final CategoriaRepository categoriaRepository;
+	  @JsonIgnore	
+	  private final CategoriaDBService db;
+	  
 
-	  public CategoriaController(CategoriaRepository categoriaRepository) {
-	    this.categoriaRepository = categoriaRepository;
+	  public CategoriaDBService getDB() {
+		  return db;
 	  }
 	  
-	  //@RequestMapping(value = "/list", produces = "application/json", method = RequestMethod.GET)
-	  @GetMapping("/categorias")
+	  public CategoriaController(CategoriaDBService db) {
+	    this.db = db;
+	  }
+	  
+	  
+	  
+	  @GetMapping("/list")
 	  public Iterable<Categoria> findAllCategorias() {
-	
-		  logger.debug("here");
-		  
-		  return this.categoriaRepository.findAll();
+		  return this.getDB().getRepository().findAll();
 	  }
 
-	  @PostMapping("/categoria")
-	  public Categoria addOneEmployee(@RequestBody Categoria categoria) {
-	    return this.categoriaRepository.save(categoria);
+	  @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
+	  public Optional<Categoria> get(@PathVariable("id") Long id) {
+		  return this.getDB().getRepository().findById(id.longValue()); 
 	  }
 	  
+	  @PostMapping("/save")
+	  public Categoria save(@RequestBody Categoria categoria) {
+	    return this.getDB().getRepository().save(categoria);
+	  }
+	  
+	  @RequestMapping(value = "/exists/{id}", method = RequestMethod.GET)
+	  public Boolean exists(@PathVariable("id") Long id) {
+		  return this.getDB().getRepository().existsById(id); 
+	  }
+
+	  @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	  public void delete(@PathVariable("id") Long id) {
+		  this.getDB().getRepository().deleteById(id);
+	  }
+	  
+	  @PostMapping("/new")
+	  public Categoria create() {
+	    // return this.categoriaRepository.
+		  return null;
+	  } 
 }
