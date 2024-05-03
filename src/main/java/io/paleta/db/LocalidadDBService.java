@@ -21,7 +21,7 @@ public class LocalidadDBService extends DBService<Localidad, Long> {
 	 }
 	 
 	 /**
-	  * <p>Annotation Transactional is required to store values into the Database</p>
+	  * <p>Annotation {@code Transactional} is required to store values into the Database</p>
 	  * 
 	  * @param name
 	  * @param createdBy
