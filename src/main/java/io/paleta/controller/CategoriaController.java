@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.paleta.db.CategoriaDBService;
+import io.paleta.db.CategoriaRepository;
 import io.paleta.logging.Logger;
 import io.paleta.model.Categoria;
-import io.paleta.repository.CategoriaRepository;
 
 /**
  * 
@@ -38,16 +38,10 @@ public class CategoriaController {
 	  @JsonIgnore	
 	  private final CategoriaDBService db;
 	  
-
-	  public CategoriaDBService getDB() {
-		  return db;
-	  }
 	  
 	  public CategoriaController(CategoriaDBService db) {
 	    this.db = db;
 	  }
-	  
-	  
 	  
 	  @GetMapping("/list")
 	  public Iterable<Categoria> findAllCategorias() {
@@ -63,6 +57,13 @@ public class CategoriaController {
 	  public Categoria save(@RequestBody Categoria categoria) {
 	    return this.getDB().getRepository().save(categoria);
 	  }
+
+	  @PostMapping("/create")
+	  public void create() {
+		  logger.debug("here");
+		
+	  }
+
 	  
 	  @RequestMapping(value = "/exists/{id}", method = RequestMethod.GET)
 	  public Boolean exists(@PathVariable("id") Long id) {
@@ -74,9 +75,10 @@ public class CategoriaController {
 		  this.getDB().getRepository().deleteById(id);
 	  }
 	  
-	  @PostMapping("/new")
-	  public Categoria create() {
-	    // return this.categoriaRepository.
-		  return null;
-	  } 
+	  
+	  
+	  public CategoriaDBService getDB() {
+		  return db;
+	  }
+
 }

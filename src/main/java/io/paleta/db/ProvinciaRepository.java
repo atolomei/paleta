@@ -1,4 +1,4 @@
-package io.paleta.repository;
+package io.paleta.db;
 
 import org.springframework.data.repository.CrudRepository;
 

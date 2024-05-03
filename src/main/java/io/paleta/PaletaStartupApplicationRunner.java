@@ -17,6 +17,7 @@ import io.paleta.logging.Logger;
 @Component
 public class PaletaStartupApplicationRunner implements ApplicationRunner {
 
+	@SuppressWarnings("unused")
 	static private Logger logger = Logger.getLogger(PaletaApplication.class.getName());
 	static private Logger startupLogger = Logger.getLogger("StartupLogger");
 
@@ -41,6 +42,9 @@ public class PaletaStartupApplicationRunner implements ApplicationRunner {
 		//boolean iGeneral = initGeneral();
 		//if(iGeneral)
 		//	startupLogger.info(ServerConstant.SEPARATOR);
+		
+		startupLogger.info	(ServerConstant.SEPARATOR);
+		
 		startupLogger.info	("Startup at -> " + OffsetDateTime.now().toString());
 	}
 	

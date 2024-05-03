@@ -52,7 +52,7 @@
 		<!-- =============================================================================================================== -->
 		<!-- Root Logger -->
 
-		<Asyncroot level="error">
+		<Asyncroot level="info">
 			<AppenderRef ref="Console" />
 			<appender-ref ref="paleta"/>
 		</Asyncroot>

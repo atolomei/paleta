@@ -1,8 +1,13 @@
 package io.paleta.model;
 
 import java.time.OffsetDateTime;
+import java.util.Optional;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -13,6 +18,7 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 
 
 @Entity
@@ -21,7 +27,8 @@ public class PaletaObject extends JsonObject {
 
 	@Id
 	@Column(name="id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sequence_gen")
+	@SequenceGenerator(name = "sequence_gen", sequenceName = "sequence_id", allocationSize = 1)
 	private long id;
 	
 	@Column(name="created")
@@ -30,10 +37,14 @@ public class PaletaObject extends JsonObject {
 	@Column(name="lastmodified")
 	private OffsetDateTime lastModified;
 	
-	//@ManyToOne(fetch = FetchType.LAZY, targetEntity = Usuario.class)
-	//@JoinColumn(name = "lastModifiedUser", nullable=true) 
 	
-	//private volatile Usuario lastModifiedUser;
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Usuario.class)
+	@JoinColumn(name = "lastModifiedUser", nullable=true)
+	@JsonManagedReference
+	@JsonBackReference
+	@JsonIgnore
+	private Usuario lastModifiedUser;
+	
 	
 	
 	public PaletaObject() {}
@@ -63,15 +74,22 @@ public class PaletaObject extends JsonObject {
 		this.lastModified = lastModified;
 	}
 
+	@JsonIgnore
 	public Usuario getLastModifidUser() {
-		//return lastModifiedUser;
-		return null;
+		return lastModifiedUser;
 	}
 
+	
 	public void setLastModifidUser(Usuario lastModifidUser) {
-		//this.lastModifiedUser = lastModifidUser;
+		this.lastModifiedUser = lastModifidUser;
 	}
 
+	
+	@JsonProperty("lastModifiedUserId")
+	public Optional<Long> getLastModifiedUserId() {
+		return (lastModifiedUser!=null) ?
+				Optional.of(lastModifiedUser.getId()) : Optional.empty();
+	}
 	
 
 	

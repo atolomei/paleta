@@ -35,6 +35,7 @@ import io.paleta.logging.Logger;
  */
 public class PaletaPropertiesListener implements ApplicationListener<ApplicationEnvironmentPreparedEvent> {
 			
+	@SuppressWarnings("unused")
 	static private Logger logger = Logger.getLogger(PaletaPropertiesListener.class.getName());
 	
 	@Override
@@ -51,7 +52,6 @@ public class PaletaPropertiesListener implements ApplicationListener<Application
 		    props.put("spring.main.lazy-initialization", "false");
 		    props.put("spring.output.ansi.enabled", "DETECT");
 		    props.put("server.error.whitelabel.enabled", "false");
-
 
 		    //props.put("server.compression.enabled", "true");
 		    //props.put("server.compression.mime-types", "text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json");

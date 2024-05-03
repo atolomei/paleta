@@ -56,7 +56,6 @@ public class PaletaApplication {
 	 *
 	 * 
 	 */
-	
 	private void initShutdownMessage() {
 	    Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {

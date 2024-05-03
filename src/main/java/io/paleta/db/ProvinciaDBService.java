@@ -1,27 +1,22 @@
 package io.paleta.db;
 
-
-
 import java.time.OffsetDateTime;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Service;
 
 import io.paleta.logging.Logger;
-import io.paleta.model.Categoria;
+import io.paleta.model.Provincia;
 import io.paleta.model.Usuario;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.transaction.Transactional;
 
-
-@Service
-public class CategoriaDBService extends DBService<Categoria, Long> {
-	
+public class ProvinciaDBService extends DBService<Provincia, Long> {
+				
 	@SuppressWarnings("unused")
 	static private Logger logger = Logger.getLogger(CategoriaDBService.class.getName());
 	
 	 
-	 public CategoriaDBService(CrudRepository<Categoria, Long> repository, EntityManagerFactory entityManagerFactory) {
+	 public ProvinciaDBService(CrudRepository<Provincia, Long> repository, EntityManagerFactory entityManagerFactory) {
 	    super(repository,  entityManagerFactory);
 	 }
 	 
@@ -34,13 +29,13 @@ public class CategoriaDBService extends DBService<Categoria, Long> {
 	  */
 	 @Transactional
 	 public void create(String name, Usuario createdBy) {
-		 Categoria c = new Categoria();
-		 c.setNombre(name);
+		 Provincia c = new Provincia();
+		 c.setName(name);
 		 c.setCreated(OffsetDateTime.now());
 		 c.setLastModified(OffsetDateTime.now());
 		 c.setLastModifidUser(createdBy);
 		 getRepository().save(c);
 	 }
-	
+	 
 
 }
