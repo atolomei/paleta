@@ -4,9 +4,7 @@
   <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		
 		<version>3.2.4</version> <!--  -->
-		
 		<relativePath/> <!-- lookup parent from repository -->
   </parent>
 
@@ -19,7 +17,7 @@
   <name>Paleta</name>
   
   <description>
-	  Paleta
+	  Paleta Server 
   </description>
 
 <properties>
@@ -244,16 +242,6 @@
 		    <artifactId>tomcat-dbcp</artifactId>
 		    <version>9.0.80</version>
 		</dependency>
-
-
-	 	<dependency>
-	        <groupId>com.squareup.moshi</groupId>
-	        <artifactId>moshi</artifactId>
-	        <version>1.15.1</version>
-	    </dependency>
-	 
-
-
 
 
 
