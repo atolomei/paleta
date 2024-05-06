@@ -1,4 +1,4 @@
-package io.paleta.db;
+package io.paleta.model;
 
 public interface SystemService {
 

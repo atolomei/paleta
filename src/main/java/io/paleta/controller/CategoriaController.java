@@ -1,5 +1,6 @@
 package io.paleta.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import io.paleta.db.CategoriaDBService;
-import io.paleta.db.CategoriaRepository;
+import io.paleta.db.repository.CategoriaRepository;
+import io.paleta.db.service.CategoriaDBService;
 import io.paleta.logging.Logger;
 import io.paleta.model.Categoria;
 
@@ -43,6 +44,11 @@ public class CategoriaController {
 	    this.db = db;
 	  }
 	  
+	  @RequestMapping(value = "/getbyname/{name}", method = RequestMethod.GET)
+	  public List<Categoria> exists(@PathVariable("name") String name) {
+		  return this.getDB().getByName(name); 
+	  }
+	  
 	  @GetMapping("/list")
 	  public Iterable<Categoria> findAllCategorias() {
 		  return this.getDB().getRepository().findAll();
@@ -50,7 +56,7 @@ public class CategoriaController {
 
 	  @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
 	  public Optional<Categoria> get(@PathVariable("id") Long id) {
-		  return this.getDB().getRepository().findById(id.longValue()); 
+		  return this.getDB().findById(id.longValue()); 
 	  }
 	  
 	  @PostMapping("/save")
@@ -61,7 +67,6 @@ public class CategoriaController {
 	  @PostMapping("/create")
 	  public void create() {
 		  logger.debug("here");
-		
 	  }
 
 	  
@@ -74,8 +79,6 @@ public class CategoriaController {
 	  public void delete(@PathVariable("id") Long id) {
 		  this.getDB().getRepository().deleteById(id);
 	  }
-	  
-	  
 	  
 	  public CategoriaDBService getDB() {
 		  return db;

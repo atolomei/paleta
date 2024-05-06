@@ -1,7 +1,3 @@
--- AAAA
-
-
-
 -- Crea Tablas 
 -- Usuarios canonicos (deberia ser solo root)
 -- y datos generales para las tablas maestras
@@ -21,7 +17,7 @@ CREATE SEQUENCE if not exists sequence_user_id 	START 100;
 
 -- para usuarios de la aplicación
 
-CREATE TABLE users (
+CREATE TABLE usuario (
 						id					bigint primary key default nextval('sequence_user_id'),
 						username			character varying(512) not null,
 						created				timestamp with time zone DEFAULT now() not null,
@@ -229,9 +225,9 @@ CREATE TABLE delegado (
 						categoria_id			bigint references persona(id) on delete restrict not null,
 						condicion_delegado_id	bigint references condicion_delegado(id) on delete restrict not null,
 						
-						created				timestamp with time zone DEFAULT now() not null,
-						lastmodified		timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser	bigint references users(id) on delete restrict not null
+						created					timestamp with time zone DEFAULT now() not null,
+						lastmodified			timestamp with time zone DEFAULT now() not null,
+						lastmodifieduser		bigint references users(id) on delete restrict not null
 );
 
 CREATE TABLE juez (
@@ -240,9 +236,9 @@ CREATE TABLE juez (
 						club_id					bigint references club(id) on delete restrict not null,
 						categoria_id			bigint references persona(id) on delete restrict not null,
 						condicion_juez_id		bigint references condicion_juez(id) on delete restrict not null,
-						created				timestamp with time zone DEFAULT now() not null,
-						lastmodified		timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser	bigint references users(id) on delete restrict not null
+						created					timestamp with time zone DEFAULT now() not null,
+						lastmodified			timestamp with time zone DEFAULT now() not null,
+						lastmodifieduser		bigint references users(id) on delete restrict not null
 );
 
 
@@ -413,7 +409,7 @@ CREATE TABLE set_partido(
 
 INSERT INTO users (id, username, lastmodifieduser) VALUES  (nextval('sequence_user_id'), 'root', 	(select currval('sequence_user_id')));
 INSERT INTO users (id, username, lastmodifieduser) VALUES  (nextval('sequence_user_id'), 'tolo', 	(select id from users where username='root'));
-INSERT INTO users (id, username, lastmodifieduser) VALUES  (nextval('sequence_user_id'), 'sensei', (select id from users where username='root'));
+INSERT INTO users (id, username, lastmodifieduser) VALUES  (nextval('sequence_user_id'), 'sensei',  (select id from users where username='root'));
 
 --TABLA: provincia
 
@@ -464,7 +460,7 @@ VALUES
 INSERT INTO status_torneo (id, nombre, created, lastmodified, lastmodifieduser)
 VALUES 
 (nextval('sequence_id'), 'En Ejecución', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'No inciado', 		now(), now(), (select id from users where username='tolo')),
+(nextval('sequence_id'), 'No iniciado', 	now(), now(), (select id from users where username='tolo')),
 (nextval('sequence_id'), 'Finalizado', 		now(), now(), (select id from users where username='tolo')),
 (nextval('sequence_id'), 'Cancelado', 		now(), now(), (select id from users where username='tolo'));
 

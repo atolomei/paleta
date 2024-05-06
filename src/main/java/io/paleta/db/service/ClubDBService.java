@@ -1,10 +1,11 @@
-package io.paleta.db;
+package io.paleta.db.service;
 
 import java.time.OffsetDateTime;
 
 import org.springframework.data.repository.CrudRepository;
 
 import io.paleta.logging.Logger;
+import io.paleta.model.Categoria;
 import io.paleta.model.Club;
 import io.paleta.model.Usuario;
 import jakarta.persistence.EntityManagerFactory;
@@ -21,6 +22,9 @@ public class ClubDBService extends DBService<Club, Long> {
 	 }
 	 
 	 
+	 protected Class getEntityClass() {
+		 return Club.class;
+	 }
 	 /**
 	  * <p>Annotation Transactional is required to store values into the Database</p>
 	  * 
@@ -30,7 +34,7 @@ public class ClubDBService extends DBService<Club, Long> {
 	 @Transactional
 	 public void create(String name, Usuario createdBy) {
 		 Club c = new Club();
-		 c.setNombre(name);
+		 c.setName(name);
 		 c.setCreated(OffsetDateTime.now());
 		 c.setLastModified(OffsetDateTime.now());
 		 c.setLastModifidUser(createdBy);

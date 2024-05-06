@@ -4,6 +4,10 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
+
+/**
+ * 
+ */
 @Entity
 @Table(name = "Condicion_jugador")
 public class CondicionJugador extends PaletaObject {
@@ -14,8 +18,6 @@ public class CondicionJugador extends PaletaObject {
 	
 	public CondicionJugador() {
 	}
-	
-
 	
 	public String getNombre() {
 		return nombre;

@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "club")
-public class Club extends PaletaObject {
+public class Club extends PaletaObject implements Named {
 
 	@Column(name="nombre")
 	private String nombre;
@@ -48,11 +48,12 @@ public class Club extends PaletaObject {
 	
 	public Club() {}
 
-	public String getNombre() {
+	@Override
+	public String getName() {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
+	public void setName(String nombre) {
 		this.nombre = nombre;
 	}
 

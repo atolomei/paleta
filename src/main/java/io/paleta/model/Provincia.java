@@ -14,6 +14,10 @@ public class Provincia extends PaletaObject {
 	
 	public Provincia() {
 	}
+
+	public Provincia(String name) {
+		setName(name);
+	}
 	
 	public void setName(String name) {
 		this.nombre = name;

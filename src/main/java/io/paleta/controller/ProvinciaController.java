@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.paleta.db.ProvinciaRepository;
+import io.paleta.db.repository.ProvinciaRepository;
 import io.paleta.logging.Logger;
 import io.paleta.model.Provincia;
 
@@ -27,6 +27,14 @@ public class ProvinciaController {
 	  public ProvinciaController(ProvinciaRepository provinciaRepository) {
 	    this.provinciaRepository = provinciaRepository;
 	  }
+	  
+	  
+	  //@RequestMapping(value = "/getbyname/{name}", method = RequestMethod.GET)
+	  //public Boolean exists(@PathVariable("name") String id) {
+	//	  return this.get 
+	 // }
+
+	  
 	  
 	  @GetMapping("/list")
 	  public Iterable<Provincia> findAllProvincia() {

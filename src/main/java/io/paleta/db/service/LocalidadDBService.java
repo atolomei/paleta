@@ -1,25 +1,24 @@
-package io.paleta.db;
+package io.paleta.db.service;
 
 import java.time.OffsetDateTime;
 
 import org.springframework.data.repository.CrudRepository;
 
 import io.paleta.logging.Logger;
-import io.paleta.model.Provincia;
+import io.paleta.model.Localidad;
 import io.paleta.model.Usuario;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.transaction.Transactional;
 
-public class ProvinciaDBService extends DBService<Provincia, Long> {
-				
+public class LocalidadDBService extends DBService<Localidad, Long> {
+
 	@SuppressWarnings("unused")
-	static private Logger logger = Logger.getLogger(CategoriaDBService.class.getName());
+	static private Logger logger = Logger.getLogger(LocalidadDBService.class.getName());
 	
 	 
-	 public ProvinciaDBService(CrudRepository<Provincia, Long> repository, EntityManagerFactory entityManagerFactory) {
+	 public LocalidadDBService(CrudRepository<Localidad, Long> repository, EntityManagerFactory entityManagerFactory) {
 	    super(repository,  entityManagerFactory);
 	 }
-	 
 	 
 	 /**
 	  * <p>Annotation {@code Transactional} is required to store values into the Database</p>
@@ -29,13 +28,16 @@ public class ProvinciaDBService extends DBService<Provincia, Long> {
 	  */
 	 @Transactional
 	 public void create(String name, Usuario createdBy) {
-		 Provincia c = new Provincia();
-		 c.setName(name);
+		 Localidad c = new Localidad();
+		 c.setNombre(name);
 		 c.setCreated(OffsetDateTime.now());
 		 c.setLastModified(OffsetDateTime.now());
 		 c.setLastModifidUser(createdBy);
 		 getRepository().save(c);
 	 }
-	 
+
+	 protected Class getEntityClass() {
+		 return Localidad.class;
+	 }
 
 }

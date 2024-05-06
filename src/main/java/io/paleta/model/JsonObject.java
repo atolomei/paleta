@@ -7,13 +7,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-
-
-
+/**
+ * <p>Base class for Classes that can be exported to JSON</p>
+ */
 public class JsonObject implements Jsonable {
 
 	static private Logger logger =	Logger.getLogger(JsonObject.class.getName());

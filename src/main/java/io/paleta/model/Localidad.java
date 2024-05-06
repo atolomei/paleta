@@ -7,7 +7,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-
+/**
+ * <p></p>
+ */
 @Entity
 @Table(name = "localidad")
 public class Localidad extends PaletaObject {

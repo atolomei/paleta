@@ -1,4 +1,4 @@
-package io.paleta.db;
+package io.paleta.db.service;
 
 
 import java.util.Optional;
@@ -29,19 +29,12 @@ public class USuarioDBService extends DBService<Usuario, Long> {
 		super(repository, entityManagerFactory);
 	}
 	
-	 /**
-     * Set up by Spring
-     */
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
 
-    
-    public SessionFactory getSessionFactory() {
-        return this.sessionFactory;
-    }
-    
-    
+	 protected Class getEntityClass() {
+		 return Usuario.class;
+	 }
+	 
+	    
     @Transactional
 	public Optional<Usuario> getRoot() {
 		

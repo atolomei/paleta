@@ -1,5 +1,7 @@
-package io.paleta.db;
+package io.paleta.db.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.SessionFactory;
@@ -11,20 +13,31 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.util.Named;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import io.paleta.logging.Logger;
+import io.paleta.model.Categoria;
+import io.paleta.model.SystemService;
+import io.paleta.model.Usuario;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.FlushModeType;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.ParameterExpression;
+import jakarta.persistence.criteria.Root;
 
 
-
-public class DBService<T,I> implements SystemService {
+public abstract class DBService<T,I> implements SystemService {
 			
 	@JsonIgnore
 	static final private ObjectMapper mapper = new ObjectMapper();
 	
-	static private Logger logger = Logger.getLogger(DBService.class.getName());
+	@Autowired
+    private SessionFactory sessionFactory;
 	
+	static private Logger logger = Logger.getLogger(DBService.class.getName());
 	
 	static {
 		mapper.registerModule(new JavaTimeModule());
@@ -40,7 +53,6 @@ public class DBService<T,I> implements SystemService {
 	EntityManagerFactory entityManagerFactory;
 
 	
-	
 	//@Bean
 	//public SessionFactory getSessionFactory() {
 	//   if (entityManagerFactory.unwrap(SessionFactory.class) == null) {
@@ -54,7 +66,6 @@ public class DBService<T,I> implements SystemService {
 		this.entityManagerFactory=entityManagerFactory;
 	}
 
-
 	public  <S extends T> S save(S entity) {
 		return getRepository().save(entity); 
 	}
@@ -63,16 +74,13 @@ public class DBService<T,I> implements SystemService {
 		return getRepository().saveAll(entities);
 	}
 
-	
 	public  Optional<T> findById(I id) {
 		return getRepository().findById(id);
 	}
 	
-	
 	public 	boolean existsById(I id) {
 		return getRepository().existsById(id);
 	}
-	
 	
 	public  Iterable<T> findAll() {
 		return getRepository().findAll();
@@ -84,18 +92,15 @@ public class DBService<T,I> implements SystemService {
 	
 	public 	long count() {
 		return getRepository().count();
-		
 	}
 	
 	public  void deleteById(I id) {
 		getRepository().deleteById(id);
 	}
 	
-	
 	public 	void delete(T entity) {
 		getRepository().delete(entity);
 	}
-	
 	
 	public 	void deleteAllById(Iterable<? extends I> ids) {
 		getRepository().deleteAllById(ids);
@@ -107,16 +112,49 @@ public class DBService<T,I> implements SystemService {
 	
 	public  void deleteAll() {
 		getRepository().deleteAll();
-	};
+	}
+	
+
 	
 	
 	
+	public   TypedQuery<T> createNameQuery() {
+		
+		
+		TypedQuery<T> query;
+		
+		CriteriaBuilder criteriabuilder = getSessionFactory().getCurrentSession().getCriteriaBuilder();
+		
+        CriteriaQuery<T> criteria = criteriabuilder.createQuery(getEntityClass());
+        Root<T> loaders = criteria.from(getEntityClass());
+        
+        ParameterExpression<String> nameparameter = criteriabuilder.parameter(String.class);
+        criteria.select(loaders).where(criteriabuilder.equal(loaders.get(getNameColumn()), nameparameter));
+        
+		query = getSessionFactory().getCurrentSession().createQuery(criteria);
+        query.setHint("org.hibernate.cacheable", true);
+        query.setFlushMode(FlushModeType.COMMIT);
+        query.setParameter(nameparameter, "root");
+        
+        return query;
+
+		
+		
+	}
+
 	
 	
-	
-	
-	
-	
+	 /**
+     * Set up by Spring
+     */
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    
+    public SessionFactory getSessionFactory() {
+        return this.sessionFactory;
+    }
 	
 	
 	
@@ -146,6 +184,11 @@ public class DBService<T,I> implements SystemService {
 	protected ObjectMapper getObjectMapper() {
 		return mapper;
 	}
+	
+	protected abstract Class getEntityClass();
+	
+	protected String getNameColumn() { return "nombre"; }
+	
 	
 
 }

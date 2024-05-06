@@ -48,7 +48,6 @@
 	<junit-jupiter.version>5.3.2</junit-jupiter.version>
 	
     <!-- mockito.version>2.24.0</ mockito.version -->
-        
 	
   </properties>
 
@@ -174,7 +173,6 @@
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
 		
-		
 		<dependency>
 			<!-- used by Log4j2 Async  -->
 			<groupId>com.lmax</groupId>
@@ -182,12 +180,10 @@
 			<version>${disruptor-version}</version>
 		</dependency>
 
-
 		<dependency>
 		    <groupId>org.apache.logging.log4j</groupId>
 		    <artifactId>log4j-spring-boot</artifactId>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -198,7 +194,6 @@
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -207,7 +202,6 @@
 			<!-- optional>true</optional -->
 		</dependency>
 		
-
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -232,7 +226,6 @@
 		    <version>5.6.15.Final</version>
 		</dependency>
 
-
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-orm</artifactId>
@@ -245,11 +238,9 @@
 		    <version>9.0.80</version>
 		</dependency>
 
-
-
 		<!-- Test                                                                       -->
-
   		<!-- exclude junit 4 -->
+  		
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -263,6 +254,7 @@
         </dependency>
 
         <!-- junit 5 -->
+        
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -275,16 +267,6 @@
             <artifactId>junit-jupiter-api</artifactId>
             <scope>test</scope>
         </dependency>
-        
-
-
-
-
-
-
-
-
-
 		
 	<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
 	<!--dependency>
@@ -312,15 +294,9 @@
 		    </exclusions>
 		</dependency -->
 		
-		
 	<!-- Test   -->
 		
-		
-		
 	</dependencies>
-	
-
-	
 	
 	<build>
 		<plugins>

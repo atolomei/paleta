@@ -1,8 +1,10 @@
-package io.paleta.db;
+package io.paleta.db.service;
 
 
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,12 @@ import io.paleta.logging.Logger;
 import io.paleta.model.Categoria;
 import io.paleta.model.Usuario;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.FlushModeType;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.ParameterExpression;
+import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
 
 
@@ -43,4 +51,23 @@ public class CategoriaDBService extends DBService<Categoria, Long> {
 	 }
 	
 
+	 @Override
+	 protected Class<?> getEntityClass() {
+		 return Categoria.class;
+	 }
+	 
+	 
+	public List<Categoria> getByName(String name) {
+		
+			TypedQuery<Categoria> query = createNameQuery();
+			
+	         if (!query.getResultList().isEmpty())
+	        	return new ArrayList<Categoria>();
+	        else
+	        	return query.getResultList();
+			
+		}
+
+	 
+	 
 }
