@@ -13,7 +13,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "localidad")
 public class Localidad extends PaletaObject {
-
 	
 	@Column(name="nombre")
 	private String nombre;
