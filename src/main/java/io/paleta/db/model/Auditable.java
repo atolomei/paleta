@@ -1,4 +1,4 @@
-package io.paleta.model;
+package io.paleta.db.model;
 
 import java.time.OffsetDateTime;
 import java.util.Optional;

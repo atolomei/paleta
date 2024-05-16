@@ -20,10 +20,12 @@ CREATE SEQUENCE if not exists sequence_user_id 	START 100;
 CREATE TABLE usuario (
 						id					bigint primary key default nextval('sequence_user_id'),
 						username			character varying(512) not null,
+						persona_id			bigint references persona(id) on delete restrict,
 						created				timestamp with time zone DEFAULT now() not null,
 						lastmodified		timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser	bigint references users(id) on delete restrict
+						lastmodifieduser	bigint references users(id) on delete restrict,
 					);
+					
 
 -- provincia y localidad
 
@@ -403,81 +405,14 @@ CREATE TABLE set_partido(
 );															
 
 
+
 -------
 
---USERS
+-- ROOT 
 
-INSERT INTO users (id, username, lastmodifieduser) VALUES  (nextval('sequence_user_id'), 'root', 	(select currval('sequence_user_id')));
-INSERT INTO users (id, username, lastmodifieduser) VALUES  (nextval('sequence_user_id'), 'tolo', 	(select id from users where username='root'));
-INSERT INTO users (id, username, lastmodifieduser) VALUES  (nextval('sequence_user_id'), 'sensei',  (select id from users where username='root'));
+INSERT INTO usuario (id, username, lastmodifieduser) VALUES  (nextval('sequence_user_id'), 'root', 	(select currval('sequence_user_id')));
+INSERT INTO persona (id, nombre, apellido, dni, created, lastmodified, lastmodifieduser) VALUES  (nextval('sequence_id'), '-', '', 'root', now(), now(), (select id from users where username='root')));
 
---TABLA: provincia
-
-INSERT INTO provincia (id, nombre, lastmodifieduser)
-VALUES
-  
-  (nextval('sequence_id'), 'Ciudad Autónoma de Buenos Aires', 	(select id from users where username='tolo')),
-  (nextval('sequence_id'), 'Buenos Aires',					 	(select id from users where username='tolo')),
-  (nextval('sequence_id'), 'Catamarca',						  	(select id from users where username='tolo')),
-  (nextval('sequence_id'), 'Chaco', 							(select id from users where username='tolo')),
-  (nextval('sequence_id'), 'Chubut',							(select id from users where username='tolo')),
-  (nextval('sequence_id'), 'Córdoba', 					 		(select id from users where username='tolo')),
-  (nextval('sequence_id'), 'Corrientes', 						(select id from users where username='tolo')),
-  (nextval('sequence_id'), 'Entre Ríos', 						(select id from users where username='tolo')),
-  (nextval('sequence_id'), 'Santa Fe',  						(select id from users where username='tolo'));
-										
-  
---Localidad
-
-INSERT INTO localidad (id, nombre, provincia_id, created, lastmodified, lastmodifieduser)
-VALUES
-  (nextval('sequence_id'), 'Ciudad Autonoma de Buenos Aires', 	(select id from provincia where nombre like 'Ciudad%' limit 1), now(), now(), (select id from users where username='sensei')),
-  (nextval('sequence_id'), 'Caseros', 							(select id from provincia where nombre like 'Buenos%' limit 1), now(), now(), (select id from users where username='sensei')),
-  (nextval('sequence_id'), 'Moron', 							(select id from provincia where nombre like 'Buenos%' limit 1), now(), now(), (select id from users where username='sensei')),
-  (nextval('sequence_id'), 'La Plata', 							(select id from provincia where nombre like 'Buenos%' limit 1), now(), now(), (select id from users where username='sensei')),
-  (nextval('sequence_id'), 'Mar del Plata', 					(select id from provincia where nombre like 'Buenos%' limit 1), now(), now(), (select id from users where username='sensei'));
-  
-
---condicion jugador
-INSERT INTO condicion_jugador (id, nombre, lastmodifieduser)
-VALUES 
-(nextval('sequence_id'), 'Titular',  (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Suplente', (select id from users where username='tolo'));
-
---condicion delegado
-INSERT INTO condicion_delegado (id, nombre, created, lastmodified, lastmodifieduser)
-VALUES 
-(nextval('sequence_id'), 'Titular', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Suplente', 	now(), now(), (select id from users where username='tolo'));
-
---condicion juez
-INSERT INTO condicion_juez (id, nombre, created, lastmodified, lastmodifieduser)
-VALUES 
-(nextval('sequence_id'), 'Activo', 		now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Inactivo', 	now(), now(), (select id from users where username='tolo'));
-
---status del torneo
-INSERT INTO status_torneo (id, nombre, created, lastmodified, lastmodifieduser)
-VALUES 
-(nextval('sequence_id'), 'En Ejecución', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'No iniciado', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Finalizado', 		now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Cancelado', 		now(), now(), (select id from users where username='tolo'));
-
-
--- Categoria
-INSERT INTO categoria (id, nombre, created, lastmodified, lastmodifieduser)
-VALUES
-(nextval('sequence_id'), 'Elite', 		now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Primera A', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Primera B', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Segunda', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Tercera', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Cuarta', 		now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Quinta', 		now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Damas A', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Damas B', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Damas C', 	now(), now(), (select id from users where username='tolo'));
 
 COMMIT;
 

@@ -16,10 +16,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.Named;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
+import io.paleta.db.model.Categoria;
+import io.paleta.db.model.SystemService;
+import io.paleta.db.model.Usuario;
 import io.paleta.logging.Logger;
-import io.paleta.model.Categoria;
-import io.paleta.model.SystemService;
-import io.paleta.model.Usuario;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.FlushModeType;
 import jakarta.persistence.TypedQuery;
@@ -183,6 +183,11 @@ public abstract class DBService<T,I> implements SystemService {
   
 	protected ObjectMapper getObjectMapper() {
 		return mapper;
+	}
+
+	
+	public List<T> getByName(String name) {
+		return createNameQuery().getResultList();
 	}
 	
 	protected abstract Class getEntityClass();

@@ -238,6 +238,15 @@
 		    <version>9.0.80</version>
 		</dependency>
 
+
+		<dependency>
+			<groupId>io</groupId>
+			<artifactId>paleta-model</artifactId>			
+			<version>0.1-beta</version>
+		</dependency>
+	
+	
+
 		<!-- Test                                                                       -->
   		<!-- exclude junit 4 -->
   		

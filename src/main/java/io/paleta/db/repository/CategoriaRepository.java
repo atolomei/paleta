@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import io.paleta.model.Categoria;
+import io.paleta.db.model.Categoria;
 
 
 /**

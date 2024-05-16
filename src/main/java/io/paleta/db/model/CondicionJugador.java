@@ -1,17 +1,22 @@
-package io.paleta.model;
+package io.paleta.db.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
+
+/**
+ * 
+ */
 @Entity
-@Table(name = "Condicion_delegado")
-public class CondicionDelegado extends PaletaObject {
-	
+@Table(name = "Condicion_jugador")
+public class CondicionJugador extends PaletaObject {
+
 	@Column(name="nombre")
 	private String nombre;
+
 	
-	public CondicionDelegado() {
+	public CondicionJugador() {
 	}
 	
 	public String getNombre() {
@@ -21,6 +26,5 @@ public class CondicionDelegado extends PaletaObject {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 
 }

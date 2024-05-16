@@ -2,15 +2,14 @@ package io.paleta.setup;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import io.paleta.db.model.Provincia;
+import io.paleta.db.model.SystemService;
+import io.paleta.db.model.Usuario;
 import io.paleta.db.service.ProvinciaDBService;
 import io.paleta.db.service.USuarioDBService;
-import io.paleta.model.Provincia;
-import io.paleta.model.SystemService;
-import io.paleta.model.Usuario;
 
 public class SetupService implements SystemService {
 
-	
 	@Autowired
 	private final USuarioDBService usuarioDBService;
 	
@@ -24,11 +23,9 @@ public class SetupService implements SystemService {
 	}
 	
 	
-	
 	public void setup() {
 		
-		addProvincias();
-		
+		addClubes();
 		
 		
 		
@@ -46,31 +43,15 @@ public class SetupService implements SystemService {
 	}
 
 	
-	public void addProvincias() {
-		
-		Usuario root = getUsuarioDBService().getRoot().get();
-		
-		
-		
-		getProvinciaDBService().create(new Provincia("Santa Fe"), root);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	public void addClubes() {
+
 		
 		
 	}
 	
-	
 	@Override
 	public String toJSON() {
-		return null;
+		return "null";
 	}
 
 }

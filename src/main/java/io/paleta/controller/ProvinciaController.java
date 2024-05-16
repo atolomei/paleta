@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.paleta.db.model.Provincia;
 import io.paleta.db.repository.ProvinciaRepository;
 import io.paleta.logging.Logger;
-import io.paleta.model.Provincia;
 
 @RestController
 @RequestMapping(value = "/provincia")

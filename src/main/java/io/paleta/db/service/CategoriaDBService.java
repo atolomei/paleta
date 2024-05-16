@@ -9,9 +9,9 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import io.paleta.db.model.Categoria;
+import io.paleta.db.model.Usuario;
 import io.paleta.logging.Logger;
-import io.paleta.model.Categoria;
-import io.paleta.model.Usuario;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.FlushModeType;
 import jakarta.persistence.TypedQuery;
@@ -51,23 +51,18 @@ public class CategoriaDBService extends DBService<Categoria, Long> {
 	 }
 	
 
-	 @Override
-	 protected Class<?> getEntityClass() {
-		 return Categoria.class;
-	 }
-	 
-	 
+	 /**
+	  * @param name
+	  * @return
+	  */
 	public List<Categoria> getByName(String name) {
-		
-			TypedQuery<Categoria> query = createNameQuery();
-			
-	         if (!query.getResultList().isEmpty())
-	        	return new ArrayList<Categoria>();
-	        else
-	        	return query.getResultList();
-			
-		}
+		return createNameQuery().getResultList();
+	}
+	
+	@Override
+	protected Class<?> getEntityClass() {
+		return Categoria.class;
+	}
 
-	 
 	 
 }

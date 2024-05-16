@@ -1,4 +1,4 @@
-package io.paleta.model;
+package io.paleta.db.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -25,4 +25,6 @@ public class Jugador extends PaletaObject implements Named {
 		return persona.getName();
 	}
 
+	
+	
 }

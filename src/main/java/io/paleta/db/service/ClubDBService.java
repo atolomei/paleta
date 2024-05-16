@@ -1,14 +1,17 @@
 package io.paleta.db.service;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
+import io.paleta.db.model.Categoria;
+import io.paleta.db.model.Club;
+import io.paleta.db.model.Usuario;
 import io.paleta.logging.Logger;
-import io.paleta.model.Categoria;
-import io.paleta.model.Club;
-import io.paleta.model.Usuario;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 public class ClubDBService extends DBService<Club, Long> {
@@ -22,9 +25,6 @@ public class ClubDBService extends DBService<Club, Long> {
 	 }
 	 
 	 
-	 protected Class getEntityClass() {
-		 return Club.class;
-	 }
 	 /**
 	  * <p>Annotation Transactional is required to store values into the Database</p>
 	  * 
@@ -40,5 +40,19 @@ public class ClubDBService extends DBService<Club, Long> {
 		 c.setLastModifidUser(createdBy);
 		 getRepository().save(c);
 	 }
+
+	 
+	 
+	 /**
+	  * @param name
+	  * @return
+	  */
+	public List<Club> getByName(String name) {
+		return createNameQuery().getResultList();
+	}
 	
+	protected Class getEntityClass() {
+		 return Club.class;
+	}
+	 
 }

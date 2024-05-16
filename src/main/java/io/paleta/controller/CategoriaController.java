@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.paleta.db.model.Categoria;
 import io.paleta.db.repository.CategoriaRepository;
 import io.paleta.db.service.CategoriaDBService;
 import io.paleta.logging.Logger;
-import io.paleta.model.Categoria;
 
 /**
  * 

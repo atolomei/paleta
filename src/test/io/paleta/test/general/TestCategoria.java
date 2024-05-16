@@ -10,11 +10,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import io.paleta.db.model.Categoria;
+import io.paleta.db.model.Usuario;
 import io.paleta.db.service.CategoriaDBService;
 import io.paleta.db.service.USuarioDBService;
 import io.paleta.logging.Logger;
-import io.paleta.model.Categoria;
-import io.paleta.model.Usuario;
 
 
 

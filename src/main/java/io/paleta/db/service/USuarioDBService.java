@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
-import io.paleta.model.Usuario;
+import io.paleta.db.model.Usuario;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.FlushModeType;
 import jakarta.persistence.TypedQuery;

@@ -6,11 +6,11 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
+import io.paleta.db.model.Categoria;
+import io.paleta.db.model.Localidad;
+import io.paleta.db.model.Provincia;
+import io.paleta.db.model.Usuario;
 import io.paleta.logging.Logger;
-import io.paleta.model.Categoria;
-import io.paleta.model.Localidad;
-import io.paleta.model.Provincia;
-import io.paleta.model.Usuario;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
@@ -40,23 +40,16 @@ public class ProvinciaDBService extends DBService<Provincia, Long> {
 		 getRepository().save(provincia);
 	 }
 	 
+	 
 	 @Transactional
 	 public void create(String name, Usuario createdBy) {
-		 Provincia p = new Provincia(name);
-		 create(p, createdBy);
+		 create(new Provincia(name), createdBy);
 	 }
 	 
 	 			
 	 public List<Provincia> getByName(String name) {
-			
-		 TypedQuery<Provincia> query = createNameQuery();
-	     
-		 if (!query.getResultList().isEmpty())
-	       	return new ArrayList<Provincia>();
-	     else
-	       	return query.getResultList();
-			
-		}
+		 return createNameQuery().getResultList();			
+	 }
 
 	 protected Class getEntityClass() {
 		 return Provincia.class;

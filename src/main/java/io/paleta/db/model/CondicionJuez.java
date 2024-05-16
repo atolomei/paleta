@@ -1,4 +1,4 @@
-package io.paleta.model;
+package io.paleta.db.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

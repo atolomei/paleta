@@ -1,4 +1,4 @@
-package io.paleta.model;
+package io.paleta.db.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,7 +44,6 @@ public class Club extends PaletaObject implements Named {
 	@Column(name="urlGoogleMmaps")
 	private String urlGoogleMmaps;
 	//logo
-	
 	
 	public Club() {}
 

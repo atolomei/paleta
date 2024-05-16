@@ -4,9 +4,9 @@ import java.time.OffsetDateTime;
 
 import org.springframework.data.repository.CrudRepository;
 
+import io.paleta.db.model.Localidad;
+import io.paleta.db.model.Usuario;
 import io.paleta.logging.Logger;
-import io.paleta.model.Localidad;
-import io.paleta.model.Usuario;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.transaction.Transactional;
 

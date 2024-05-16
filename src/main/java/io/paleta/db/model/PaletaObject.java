@@ -1,4 +1,4 @@
-package io.paleta.model;
+package io.paleta.db.model;
 
 import java.time.OffsetDateTime;
 import java.util.Optional;
@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.paleta.model.JsonObject;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

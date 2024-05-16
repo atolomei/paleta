@@ -1,4 +1,4 @@
-package io.paleta.model;
+package io.paleta.db.model;
 
 public interface Named {
 
