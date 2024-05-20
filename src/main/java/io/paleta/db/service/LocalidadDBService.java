@@ -3,6 +3,7 @@ package io.paleta.db.service;
 import java.time.OffsetDateTime;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Service;
 
 import io.paleta.db.model.Localidad;
 import io.paleta.db.model.Usuario;
@@ -10,6 +11,8 @@ import io.paleta.logging.Logger;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.transaction.Transactional;
 
+
+@Service
 public class LocalidadDBService extends DBService<Localidad, Long> {
 
 	@SuppressWarnings("unused")

@@ -29,11 +29,6 @@ public class USuarioDBService extends DBService<Usuario, Long> {
 		super(repository, entityManagerFactory);
 	}
 	
-
-	 protected Class getEntityClass() {
-		 return Usuario.class;
-	 }
-	 
 	    
     @Transactional
 	public Optional<Usuario> getRoot() {
@@ -55,5 +50,11 @@ public class USuarioDBService extends DBService<Usuario, Long> {
         else
         	return Optional.empty();
 	}
+
+    
+	 protected Class getEntityClass() {
+		 return Usuario.class;
+	 }
+	 
 
 }

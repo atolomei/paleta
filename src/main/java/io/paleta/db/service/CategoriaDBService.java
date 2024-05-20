@@ -29,6 +29,7 @@ public class CategoriaDBService extends DBService<Categoria, Long> {
 	static private Logger logger = Logger.getLogger(CategoriaDBService.class.getName());
 	
 	 
+	
 	 public CategoriaDBService(CrudRepository<Categoria, Long> repository, EntityManagerFactory entityManagerFactory) {
 	    super(repository,  entityManagerFactory);
 	 }

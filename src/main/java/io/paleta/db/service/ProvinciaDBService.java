@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Service;
 
 import io.paleta.db.model.Categoria;
 import io.paleta.db.model.Localidad;
@@ -15,6 +16,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
+@Service
 public class ProvinciaDBService extends DBService<Provincia, Long> {
 				
 	@SuppressWarnings("unused")

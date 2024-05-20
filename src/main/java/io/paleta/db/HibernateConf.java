@@ -1,5 +1,6 @@
 package io.paleta.db;
 
+
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -14,6 +15,8 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import io.paleta.PaletaApplication;
+
 // import jakarta.persistence.EntityManagerFactory;
 
 /**
@@ -23,12 +26,24 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 public class HibernateConf {
+
+	
+	@Autowired
+	private final SettingsService settigsService;
+	
+	
+	public HibernateConf(SettingsService settigsService) {
+		this.settigsService= settigsService;
+	}
+	
+	
+	
 	
 	@Bean(name="entityManagerFactory")
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("io.paleta.model");
+        sessionFactory.setPackagesToScan(PaletaApplication.hibernateConfPackages);
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
@@ -36,10 +51,13 @@ public class HibernateConf {
     @Bean
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/paleta");
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("novamens");
+
+        String s=settigsService.getDriverClassName();
+        
+        dataSource.setDriverClassName(PaletaApplication.driverClassName);
+        dataSource.setUrl(PaletaApplication.url);
+        dataSource.setUsername(PaletaApplication.userName);
+        dataSource.setPassword(PaletaApplication.password);
         return dataSource;
     }
     

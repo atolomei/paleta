@@ -14,60 +14,42 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import io.paleta.db.model.Categoria;
-import io.paleta.db.repository.CategoriaRepository;
-import io.paleta.db.service.CategoriaDBService;
+
+import io.paleta.db.model.Club;
+import io.paleta.db.service.ClubDBService;
 import io.paleta.logging.Logger;
 
-/**
- * 
- * 
- * <p>
- *  CRUD
- *  
- *  list
- *   get
- *  
- * </p>
- */
 @RestController
-@RequestMapping(value = "/categoria")
-public class CategoriaController {
-		
-	static private Logger logger = Logger.getLogger(CategoriaController.class.getName());
+@RequestMapping(value = "/club")
+public class ClubController {
+
+	  static private Logger logger = Logger.getLogger(ClubController.class.getName());
 	
-	 
-	  @JsonIgnore
+	  @JsonIgnore	
 	  @Autowired
-	  private  CategoriaDBService db;
+	  private final ClubDBService db;
 	  
-	  
-	  public CategoriaController() {
-		  
-	  }
-	  
-	  
-	  public CategoriaController(CategoriaDBService db) {
+	  public ClubController(ClubDBService db) {
 	    this.db = db;
 	  }
 	  
 	  @RequestMapping(value = "/getbyname/{name}", method = RequestMethod.GET)
-	  public List<Categoria> exists(@PathVariable("name") String name) {
+	  public List<Club> exists(@PathVariable("name") String name) {
 		  return this.getDB().getByName(name); 
 	  }
 	  
 	  @GetMapping("/list")
-	  public Iterable<Categoria> findAllCategorias() {
+	  public Iterable<Club> findAll() {
 		  return this.getDB().getRepository().findAll();
 	  }
 
 	  @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-	  public Optional<Categoria> get(@PathVariable("id") Long id) {
+	  public Optional<Club> get(@PathVariable("id") Long id) {
 		  return this.getDB().findById(id.longValue()); 
 	  }
 	  
 	  @PostMapping("/save")
-	  public Categoria save(@RequestBody Categoria categoria) {
+	  public Club save(@RequestBody Club categoria) {
 	    return this.getDB().getRepository().save(categoria);
 	  }
 
@@ -76,7 +58,6 @@ public class CategoriaController {
 		  logger.debug("here");
 	  }
 
-	  
 	  @RequestMapping(value = "/exists/{id}", method = RequestMethod.GET)
 	  public Boolean exists(@PathVariable("id") Long id) {
 		  return this.getDB().getRepository().existsById(id); 
@@ -87,8 +68,9 @@ public class CategoriaController {
 		  this.getDB().getRepository().deleteById(id);
 	  }
 	  
-	  public CategoriaDBService getDB() {
+	  public ClubDBService getDB() {
 		  return db;
 	  }
 
+	
 }

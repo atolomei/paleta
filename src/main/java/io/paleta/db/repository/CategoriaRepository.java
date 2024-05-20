@@ -1,10 +1,10 @@
 package io.paleta.db.repository;
 
-import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
 import io.paleta.db.model.Categoria;
+
 
 
 /**

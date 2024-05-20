@@ -6,7 +6,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "categoria")
-public class Categoria extends PaletaObject {
+public class Categoria extends PaletaObject  implements Named {
 
 	@Column(name="nombre")
 	private String nombre;
@@ -26,6 +26,11 @@ public class Categoria extends PaletaObject {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	@Override
+	public String getName() {
+		return nombre;
 	}
 	
 }
