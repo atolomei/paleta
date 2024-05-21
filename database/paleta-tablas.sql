@@ -17,15 +17,15 @@ CREATE SEQUENCE if not exists sequence_user_id 	START 100;
 
 -- para usuarios de la aplicación
 
-CREATE TABLE usuario (
+CREATE TABLE usuarios (
 						id					bigint primary key default nextval('sequence_user_id'),
 						username			character varying(512) not null,
-						persona_id			bigint references persona(id) on delete restrict,
 						created				timestamp with time zone DEFAULT now() not null,
-						lastmodified		timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser	bigint references users(id) on delete restrict,
+						lastmodified		timestamp with time zone DEFAULT now() not null						
 					);
 					
+alter table usuarios add column  lastmodifieduser bigint references usuarios(id) on delete restrict;
+
 
 -- provincia y localidad
 
@@ -34,7 +34,7 @@ CREATE TABLE provincia 	(
 						nombre				character varying(512) not null,
 						created				timestamp with time zone DEFAULT now() not null,
 						lastmodified		timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser	bigint references users(id) on delete restrict not null
+						lastmodifieduser	bigint references usuarios(id) on delete restrict not null
 
 					);
 
@@ -46,7 +46,7 @@ CREATE TABLE localidad	(
 						provincia_id 		bigint references provincia on delete restrict not null,
 						created				timestamp with time zone DEFAULT now() not null,
 						lastmodified		timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser	bigint references users(id) on delete restrict not null
+						lastmodifieduser	bigint references usuarios(id) on delete restrict not null
 					);
 
 -- titular, suplente
@@ -55,7 +55,7 @@ CREATE TABLE condicion_jugador (
 						nombre				character varying(512) not null,
 						created				timestamp with time zone DEFAULT now() not null,
 						lastmodified		timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser	bigint references users(id) on delete restrict not null
+						lastmodifieduser	bigint references usuarios(id) on delete restrict not null
 );
 
 -- titular, suplente
@@ -64,7 +64,7 @@ CREATE TABLE condicion_delegado (
 						nombre				character varying(512) not null,
 						created				timestamp with time zone DEFAULT now(),
 						lastmodified		timestamp with time zone DEFAULT now(),
-						lastmodifieduser	bigint references users(id) on delete restrict
+						lastmodifieduser	bigint references usuarios(id) on delete restrict
 );
 
 -- activo, inactivo
@@ -73,7 +73,7 @@ CREATE TABLE condicion_juez (
 						nombre				character varying(512) not null, --activo inactivo
 						created				timestamp with time zone DEFAULT now(),
 						lastmodified		timestamp with time zone DEFAULT now(),
-						lastmodifieduser	bigint references users(id) on delete restrict
+						lastmodifieduser	bigint references usuarios(id) on delete restrict
 );
 
 CREATE TABLE status_torneo (
@@ -81,7 +81,7 @@ CREATE TABLE status_torneo (
 						nombre				character varying(512) not null, --enejecucion / no inciado / finalizado/ cancelado
 						created				timestamp with time zone DEFAULT now(),
 						lastmodified		timestamp with time zone DEFAULT now(),
-						lastmodifieduser	bigint references users(id) on delete restrict
+						lastmodifieduser	bigint references usuarios(id) on delete restrict
 );
 					
 					
@@ -93,7 +93,7 @@ CREATE TABLE categoria (
 						nombre				character varying(512) not null,
 						created				timestamp with time zone DEFAULT now() not null,
 						lastmodified		timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser	bigint references users(id) on delete restrict not null
+						lastmodifieduser	bigint references usuarios(id) on delete restrict not null
 						);					
 
 
@@ -120,7 +120,7 @@ CREATE TABLE club (
 						
 						created				timestamp with time zone DEFAULT now() not null,
 						lastmodified		timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser	bigint references users(id) on delete restrict not null
+						lastmodifieduser	bigint references usuarios(id) on delete restrict not null
 					);
 
 
@@ -139,10 +139,10 @@ CREATE TABLE persona (
 						foto_carnet			bytea,
 						fecha_nacimiento	timestamp with time zone,
 						cert_fisico_fecha	timestamp with time zone,
-						
+						usuario_id			bigint references usuarios(id) on delete restrict,
 						created				timestamp with time zone DEFAULT now() not null,
 						lastmodified		timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser	bigint references users(id) on delete restrict not null
+						lastmodifieduser	bigint references usuarios(id) on delete restrict not null
 					);
 
 CREATE TABLE jugador (
@@ -151,7 +151,7 @@ CREATE TABLE jugador (
 						club_id					bigint references club(id) on delete restrict not null,
 						created					timestamp with time zone DEFAULT now() not null,
 						lastmodified			timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser		bigint references users(id) on delete restrict
+						lastmodifieduser		bigint references usuarios(id) on delete restrict
 					);
 
 
@@ -167,7 +167,7 @@ CREATE TABLE torneo (
 						
 						created				timestamp with time zone DEFAULT now() not null,
 						lastmodified		timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser	bigint references users(id) on delete restrict not null
+						lastmodifieduser	bigint references usuarios(id) on delete restrict not null
 );
 
 
@@ -178,7 +178,7 @@ CREATE TABLE etapa_torneo ( -- a reveer
 						notas					text,
 						created					timestamp with time zone DEFAULT now() not null,
 						lastmodified			timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser		bigint references users(id) on delete restrict not null
+						lastmodifieduser		bigint references usuarios(id) on delete restrict not null
 );
 
 
@@ -190,7 +190,7 @@ CREATE TABLE zona_torneo (
 						notas					text,
 						created					timestamp with time zone DEFAULT now() not null,
 						lastmodified			timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser		bigint references users(id) on delete restrict not null
+						lastmodifieduser		bigint references usuarios(id) on delete restrict not null
 );
 
 			
@@ -204,7 +204,7 @@ CREATE TABLE equipo (
 						torneo_id			bigint references torneo(id) on delete restrict not null,
 						created				timestamp with time zone DEFAULT now(),
 						lastmodified		timestamp with time zone DEFAULT now(),
-						lastmodifieduser	bigint references users(id) on delete restrict
+						lastmodifieduser	bigint references usuarios(id) on delete restrict
 
 );
 
@@ -216,7 +216,7 @@ CREATE TABLE jugador_equipo (
 						condicion_jugador_id	bigint references condicion_jugador(id) on delete restrict not null,
 						created					timestamp with time zone DEFAULT now() not null,
 						lastmodified			timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser		bigint references users(id) on delete restrict
+						lastmodifieduser		bigint references usuarios(id) on delete restrict
 					);
 
 
@@ -229,7 +229,7 @@ CREATE TABLE delegado (
 						
 						created					timestamp with time zone DEFAULT now() not null,
 						lastmodified			timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser		bigint references users(id) on delete restrict not null
+						lastmodifieduser		bigint references usuarios(id) on delete restrict not null
 );
 
 CREATE TABLE juez (
@@ -240,7 +240,7 @@ CREATE TABLE juez (
 						condicion_juez_id		bigint references condicion_juez(id) on delete restrict not null,
 						created					timestamp with time zone DEFAULT now() not null,
 						lastmodified			timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser		bigint references users(id) on delete restrict not null
+						lastmodifieduser		bigint references usuarios(id) on delete restrict not null
 );
 
 
@@ -253,7 +253,7 @@ CREATE TABLE zona_torneo_equipo (
 						notas					text,
 						created					timestamp with time zone DEFAULT now() not null,
 						lastmodified			timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser		bigint references users(id) on delete restrict not null
+						lastmodifieduser		bigint references usuarios(id) on delete restrict not null
 );
 
 
@@ -265,7 +265,7 @@ CREATE TABLE lista_buena_fe (
 						notas				text,
 						created				timestamp with time zone DEFAULT now() not null,
 						lastmodified		timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser	bigint references users(id) on delete restrict not null
+						lastmodifieduser	bigint references usuarios(id) on delete restrict not null
 						
 );
 
@@ -277,7 +277,7 @@ CREATE TABLE lista_buena_fe_delegado (
 						notas					text,
 						created					timestamp with time zone DEFAULT now() not null,
 						lastmodified			timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser		bigint references users(id) on delete restrict not null
+						lastmodifieduser		bigint references usuarios(id) on delete restrict not null
 );
 
 
@@ -289,7 +289,7 @@ CREATE TABLE lista_buena_fe_jugador (
 						notas					text,
 						created					timestamp with time zone DEFAULT now()  not null,
 						lastmodified			timestamp with time zone DEFAULT now()  not null,
-						lastmodifieduser		bigint references users(id) on delete restrict not null
+						lastmodifieduser		bigint references usuarios(id) on delete restrict not null
 );
 
 CREATE TABLE fecha_torneo (
@@ -302,7 +302,7 @@ CREATE TABLE fecha_torneo (
 						hora					character(5),
 						created					timestamp with time zone DEFAULT now() not null,
 						lastmodified			timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser		bigint references users(id) on delete restrict not null
+						lastmodifieduser		bigint references usuarios(id) on delete restrict not null
 );
 
 CREATE TABLE fecha_torneo_encuentro ( --fixture
@@ -315,7 +315,7 @@ CREATE TABLE fecha_torneo_encuentro ( --fixture
 						equipo_visitante_id 	bigint not null references equipo(id) on delete restrict not null,
 						created					timestamp with time zone DEFAULT now() not null,
 						lastmodified			timestamp with time zone DEFAULT now() not null,
-						lastmodifieduser		bigint references users(id) on delete restrict not null
+						lastmodifieduser		bigint references usuarios(id) on delete restrict not null
 );
 
 -- 
@@ -383,7 +383,7 @@ observaciones_arbitro_auxiliar 	text,
 
 created							timestamp with time zone DEFAULT now() not null,
 lastmodified					timestamp with time zone DEFAULT now() not null,
-lastmodifieduser				bigint references users(id) on delete restrict not null
+lastmodifieduser				bigint references usuarios(id) on delete restrict not null
 
 );
 
@@ -401,7 +401,7 @@ CREATE TABLE set_partido(
 						minuto2_vistante 			boolean default false, 
 						created						timestamp with time zone DEFAULT now() not null,				
 						lastmodified				timestamp with time zone DEFAULT now() not null,						
-						lastmodifieduser			bigint references users(id) on delete restrict not null							
+						lastmodifieduser			bigint references usuarios(id) on delete restrict not null							
 );															
 
 
@@ -410,8 +410,11 @@ CREATE TABLE set_partido(
 
 -- ROOT 
 
-INSERT INTO usuario (id, username, lastmodifieduser) VALUES  (nextval('sequence_user_id'), 'root', 	(select currval('sequence_user_id')));
-INSERT INTO persona (id, nombre, apellido, dni, created, lastmodified, lastmodifieduser) VALUES  (nextval('sequence_id'), '-', '', 'root', now(), now(), (select id from users where username='root')));
+INSERT INTO usuarios (id, username, lastmodifieduser) VALUES  
+(nextval('sequence_user_id'), 'root', 	(select currval('sequence_user_id')));
+
+INSERT INTO persona (id, nombre, apellido, dni, created, lastmodified, lastmodifieduser) 
+VALUES  (nextval('sequence_id'), '-', 'root', '', now(), now(), (select id from usuarios where username='root'));
 
 
 COMMIT;

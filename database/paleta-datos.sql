@@ -5,12 +5,12 @@ BEGIN;
 
 -- PERSONA
 
-INSERT INTO persona (id, nombre, apellido, dni, created, lastmodified, lastmodifieduser) VALUES  (nextval('sequence_id'), '-', 'Alejandro', 'Tolomei', now(), now(), (select id from users where username='root')));
-INSERT INTO persona (id, nombre, apellido, dni, created, lastmodified, lastmodifieduser) VALUES  (nextval('sequence_id'), '-', 'Juan', 		'Bobbio', now(), now(), (select id from users where username='root')));
+INSERT INTO persona (id, nombre, apellido, dni, created, lastmodified, lastmodifieduser) VALUES  (nextval('sequence_id'), '-', 'Alejandro', 'Tolomei', now(), now(), (select id from usuarios where username='root'));
+INSERT INTO persona (id, nombre, apellido, dni, created, lastmodified, lastmodifieduser) VALUES  (nextval('sequence_id'), '-', 'Juan', 		'Bobbio', now(), now(), (select id from usuarios where username='root'));
 
 -- USER 
-INSERT INTO usuario (id, username, lastmodifieduser) VALUES  (nextval('sequence_user_id'), 'tolo', 	(select id from users where username='root'));
-INSERT INTO usuario (id, username, lastmodifieduser) VALUES  (nextval('sequence_user_id'), 'sensei',  (select id from users where username='root'));
+INSERT INTO usuarios (id, username, lastmodifieduser) VALUES  (nextval('sequence_user_id'), 'tolo', 	(select id from usuarios where username='root'));
+INSERT INTO usuarios (id, username, lastmodifieduser) VALUES  (nextval('sequence_user_id'), 'sensei',  (select id from usuarios where username='root'));
 
 
 
@@ -21,70 +21,70 @@ INSERT INTO usuario (id, username, lastmodifieduser) VALUES  (nextval('sequence_
 INSERT INTO provincia (id, nombre, lastmodifieduser)
 VALUES
   
-  (nextval('sequence_id'), 'Ciudad Autónoma de Buenos Aires', 	(select id from users where username='tolo')),
-  (nextval('sequence_id'), 'Buenos Aires',					 	(select id from users where username='tolo')),
-  (nextval('sequence_id'), 'Catamarca',						  	(select id from users where username='tolo')),
-  (nextval('sequence_id'), 'Chaco', 							(select id from users where username='tolo')),
-  (nextval('sequence_id'), 'Chubut',							(select id from users where username='tolo')),
-  (nextval('sequence_id'), 'Córdoba', 					 		(select id from users where username='tolo')),
-  (nextval('sequence_id'), 'Corrientes', 						(select id from users where username='tolo')),
-  (nextval('sequence_id'), 'Entre Ríos', 						(select id from users where username='tolo')),
-  (nextval('sequence_id'), 'Santa Fe',  						(select id from users where username='tolo'));
+  (nextval('sequence_id'), 'Ciudad Autónoma de Buenos Aires', 	(select id from usuarios where username='tolo')),
+  (nextval('sequence_id'), 'Buenos Aires',					 	(select id from usuarios where username='tolo')),
+  (nextval('sequence_id'), 'Catamarca',						  	(select id from usuarios where username='tolo')),
+  (nextval('sequence_id'), 'Chaco', 							(select id from usuarios where username='tolo')),
+  (nextval('sequence_id'), 'Chubut',							(select id from usuarios where username='tolo')),
+  (nextval('sequence_id'), 'Córdoba', 					 		(select id from usuarios where username='tolo')),
+  (nextval('sequence_id'), 'Corrientes', 						(select id from usuarios where username='tolo')),
+  (nextval('sequence_id'), 'Entre Ríos', 						(select id from usuarios where username='tolo')),
+  (nextval('sequence_id'), 'Santa Fe',  						(select id from usuarios where username='tolo'));
 										
   
 --Localidad
 
 INSERT INTO localidad (id, nombre, provincia_id, created, lastmodified, lastmodifieduser)
 VALUES
-  (nextval('sequence_id'), 'Ciudad Autonoma de Buenos Aires', 	(select id from provincia where nombre like 'Ciudad%' limit 1), now(), now(), (select id from users where username='sensei')),
-  (nextval('sequence_id'), 'Caseros', 							(select id from provincia where nombre like 'Buenos%' limit 1), now(), now(), (select id from users where username='sensei')),
-  (nextval('sequence_id'), 'Moron', 							(select id from provincia where nombre like 'Buenos%' limit 1), now(), now(), (select id from users where username='sensei')),
-  (nextval('sequence_id'), 'Esteban Echeverría', 				(select id from provincia where nombre like 'Buenos%' limit 1), now(), now(), (select id from users where username='sensei')),
-  (nextval('sequence_id'), 'Wilde', 							(select id from provincia where nombre like 'Buenos%' limit 1), now(), now(), (select id from users where username='sensei')),
-  (nextval('sequence_id'), 'La Plata', 							(select id from provincia where nombre like 'Buenos%' limit 1), now(), now(), (select id from users where username='sensei')),
-  (nextval('sequence_id'), 'Mar del Plata', 					(select id from provincia where nombre like 'Buenos%' limit 1), now(), now(), (select id from users where username='sensei'));
+  (nextval('sequence_id'), 'Ciudad Autonoma de Buenos Aires', 	(select id from provincia where nombre like 'Ciudad%' limit 1), now(), now(), (select id from usuarios where username='sensei')),
+  (nextval('sequence_id'), 'Caseros', 							(select id from provincia where nombre like 'Buenos%' limit 1), now(), now(), (select id from usuarios where username='sensei')),
+  (nextval('sequence_id'), 'Moron', 							(select id from provincia where nombre like 'Buenos%' limit 1), now(), now(), (select id from usuarios where username='sensei')),
+  (nextval('sequence_id'), 'Esteban Echeverría', 				(select id from provincia where nombre like 'Buenos%' limit 1), now(), now(), (select id from usuarios where username='sensei')),
+  (nextval('sequence_id'), 'Wilde', 							(select id from provincia where nombre like 'Buenos%' limit 1), now(), now(), (select id from usuarios where username='sensei')),
+  (nextval('sequence_id'), 'La Plata', 							(select id from provincia where nombre like 'Buenos%' limit 1), now(), now(), (select id from usuarios where username='sensei')),
+  (nextval('sequence_id'), 'Mar del Plata', 					(select id from provincia where nombre like 'Buenos%' limit 1), now(), now(), (select id from usuarios where username='sensei'));
   
 
 --condicion jugador
 INSERT INTO condicion_jugador (id, nombre, lastmodifieduser)
 VALUES 
-(nextval('sequence_id'), 'Titular',  (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Suplente', (select id from users where username='tolo'));
+(nextval('sequence_id'), 'Titular',  (select id from usuarios where username='tolo')),
+(nextval('sequence_id'), 'Suplente', (select id from usuarios where username='tolo'));
 
 --condicion delegado
 INSERT INTO condicion_delegado (id, nombre, created, lastmodified, lastmodifieduser)
 VALUES 
-(nextval('sequence_id'), 'Titular', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Suplente', 	now(), now(), (select id from users where username='tolo'));
+(nextval('sequence_id'), 'Titular', 	now(), now(), (select id from usuarios where username='tolo')),
+(nextval('sequence_id'), 'Suplente', 	now(), now(), (select id from usuarios where username='tolo'));
 
 --condicion juez
 INSERT INTO condicion_juez (id, nombre, created, lastmodified, lastmodifieduser)
 VALUES 
-(nextval('sequence_id'), 'Activo', 		now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Inactivo', 	now(), now(), (select id from users where username='tolo'));
+(nextval('sequence_id'), 'Activo', 		now(), now(), (select id from usuarios where username='tolo')),
+(nextval('sequence_id'), 'Inactivo', 	now(), now(), (select id from usuarios where username='tolo'));
 
 --status del torneo
 INSERT INTO status_torneo (id, nombre, created, lastmodified, lastmodifieduser)
 VALUES 
-(nextval('sequence_id'), 'En Ejecución', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'No iniciado', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Finalizado', 		now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Cancelado', 		now(), now(), (select id from users where username='tolo'));
+(nextval('sequence_id'), 'En Ejecución', 	now(), now(), (select id from usuarios where username='tolo')),
+(nextval('sequence_id'), 'No iniciado', 	now(), now(), (select id from usuarios where username='tolo')),
+(nextval('sequence_id'), 'Finalizado', 		now(), now(), (select id from usuarios where username='tolo')),
+(nextval('sequence_id'), 'Cancelado', 		now(), now(), (select id from usuarios where username='tolo'));
 
 
 -- Categoria
 INSERT INTO categoria (id, nombre, created, lastmodified, lastmodifieduser)
 VALUES
-(nextval('sequence_id'), 'Elite', 		now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Primera A', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Primera B', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Segunda', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Tercera', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Cuarta', 		now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Quinta', 		now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Damas A', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Damas B', 	now(), now(), (select id from users where username='tolo')),
-(nextval('sequence_id'), 'Damas C', 	now(), now(), (select id from users where username='tolo'));
+(nextval('sequence_id'), 'Elite', 		now(), now(), (select id from usuarios where username='tolo')),
+(nextval('sequence_id'), 'Primera A', 	now(), now(), (select id from usuarios where username='tolo')),
+(nextval('sequence_id'), 'Primera B', 	now(), now(), (select id from usuarios where username='tolo')),
+(nextval('sequence_id'), 'Segunda', 	now(), now(), (select id from usuarios where username='tolo')),
+(nextval('sequence_id'), 'Tercera', 	now(), now(), (select id from usuarios where username='tolo')),
+(nextval('sequence_id'), 'Cuarta', 		now(), now(), (select id from usuarios where username='tolo')),
+(nextval('sequence_id'), 'Quinta', 		now(), now(), (select id from usuarios where username='tolo')),
+(nextval('sequence_id'), 'Damas A', 	now(), now(), (select id from usuarios where username='tolo')),
+(nextval('sequence_id'), 'Damas B', 	now(), now(), (select id from usuarios where username='tolo')),
+(nextval('sequence_id'), 'Damas C', 	now(), now(), (select id from usuarios where username='tolo'));
 
 
 
@@ -104,7 +104,7 @@ VALUES
   (select id from provincia where nombre like 'Ciudad%' limit 1), 
   'https://www.cuba.org.ar', 
   'https://maps.google.com/cuba', 
-  (select id from users where username='tolo')),
+  (select id from usuarios where username='tolo')),
   
   (nextval('sequence_id'), 
   'Ciudad de Buenos Aires', 'Marcelino Freyre 3831', '1900', '0221-423-7134', 'info@gimnasiayesgrima.org',
@@ -113,7 +113,7 @@ VALUES
   (select id from provincia where nombre like 'Ciudad%' limit 1), 
    'https://muni.org.ar/wp2/', 
    'https://maps.google.com/gelp',
-   (select id from users where username='tolo')),
+   (select id from usuarios where username='tolo')),
 
   (nextval('sequence_id'), 
   'Wilde', 'Marcelino Freyre 3831', '1900', '0221-423-7134', 'info@gimnasiayesgrima.org',
@@ -122,7 +122,7 @@ VALUES
   (select id from provincia where nombre like 'Ciudad%' limit 1), 
    'https://muni.org.ar/wp2/', 
    'https://maps.google.com/gelp',
-   (select id from users where username='tolo')),
+   (select id from usuarios where username='tolo')),
 
 	(nextval('sequence_id'), 
 	'Chicago', 'Marcelino Freyre 3831', '1900', '0221-423-7134', 'info@gimnasiayesgrima.org',
@@ -131,7 +131,7 @@ VALUES
   (select id from provincia where nombre like 'Ciudad%' limit 1), 
    'https://muni.org.ar/wp2/', 
    'https://maps.google.com/gelp',
-   (select id from users where username='tolo')),
+   (select id from usuarios where username='tolo')),
    
    (nextval('sequence_id'), 
 	'Esteban Echeverría', 'Marcelino Freyre 3831', '1900', '0221-423-7134', 'info@gimnasiayesgrima.org',
@@ -140,7 +140,7 @@ VALUES
   (select id from provincia where nombre like 'Ciudad%' limit 1), 
    'https://muni.org.ar/wp2/', 
    'https://maps.google.com/gelp',
-   (select id from users where username='tolo')),
+   (select id from usuarios where username='tolo')),
 	
 	(nextval('sequence_id'), 
 	'Urquiza', 'Marcelino Freyre 3831', '1900', '0221-423-7134', 'info@gimnasiayesgrima.org',
@@ -149,7 +149,7 @@ VALUES
   (select id from provincia where nombre like 'Ciudad%' limit 1), 
    'https://muni.org.ar/wp2/', 
    'https://maps.google.com/gelp',
-   (select id from users where username='tolo')),
+   (select id from usuarios where username='tolo')),
 
   
   (nextval('sequence_id'), 
@@ -160,7 +160,7 @@ VALUES
     (select id from provincia where nombre like 'Ciudad%' limit 1), 
    'https://www.bs.org', 
    'https://maps.google.com/bs', 
-   (select id from users where username='tolo'));
+   (select id from usuarios where username='tolo'));
 
 
 --Persona
@@ -168,36 +168,36 @@ VALUES
 INSERT INTO persona (id, nombre, apellido, dni, direccion, localidad_id, telefono, email, cert_fisico_fecha, lastmodifieduser)
 VALUES																			
    -- CUBA B	
-  (nextval('sequence_id'), 'Alejandro',			'Tolomei', 						'30123456', 'Av. Rivadavia 123', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-12345678', 'juan@example.com',  	now(),  (select id from users where username='root')),
-  (nextval('sequence_id'), 'Facundo', 			'Rocha',	 					'40123456', 'Calle San Martín 456', 	(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-23456789', 'maria@example.com',  	now(),  (select id from users where username='root')),
+  (nextval('sequence_id'), 'Alejandro',			'Tolomei', 						'30123456', 'Av. Rivadavia 123', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-12345678', 'juan@example.com',  	now(),  (select id from usuarios where username='root')),
+  (nextval('sequence_id'), 'Facundo', 			'Rocha',	 					'40123456', 'Calle San Martín 456', 	(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-23456789', 'maria@example.com',  	now(),  (select id from usuarios where username='root')),
   
    -- CUBA A	
-  (nextval('sequence_id'), 'Francisco',			'Sosa', 						'30123456', 'Av. Rivadavia 123', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-12345678', 'juan@example.com',  	now(),  (select id from users where username='root')),
-  (nextval('sequence_id'), 'Raul',	 			'Gonzalez Garrido',				'40123456', 'Calle San Martín 456', 	(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-23456789', 'maria@example.com',  	now(),  (select id from users where username='root')),
+  (nextval('sequence_id'), 'Francisco',			'Sosa', 						'30123456', 'Av. Rivadavia 123', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-12345678', 'juan@example.com',  	now(),  (select id from usuarios where username='root')),
+  (nextval('sequence_id'), 'Raul',	 			'Gonzalez Garrido',				'40123456', 'Calle San Martín 456', 	(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-23456789', 'maria@example.com',  	now(),  (select id from usuarios where username='root')),
 
    -- ESTEBAN ECHEVERRIA B	
-  (nextval('sequence_id'), 'Juan',				'Esteban Echeverria B', 		'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from users where username='root')),
-  (nextval('sequence_id'), 'Pedro',				'Esteban Echeverria B', 		'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from users where username='root')),
+  (nextval('sequence_id'), 'Juan',				'Esteban Echeverria B', 		'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from usuarios where username='root')),
+  (nextval('sequence_id'), 'Pedro',				'Esteban Echeverria B', 		'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from usuarios where username='root')),
   
   -- WILDE D
-  (nextval('sequence_id'), 'Juan',				'Wilde D', 						'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from users where username='root')),
-  (nextval('sequence_id'), 'Pedro',				'Wilde D', 						'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from users where username='root')),
+  (nextval('sequence_id'), 'Juan',				'Wilde D', 						'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from usuarios where username='root')),
+  (nextval('sequence_id'), 'Pedro',				'Wilde D', 						'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from usuarios where username='root')),
   
    -- CIUDAD C
-  (nextval('sequence_id'), 'Juan',				'Ciudad C', 					'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from users where username='root')),
-  (nextval('sequence_id'), 'Pedro',				'Ciudad C', 					'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from users where username='root')),
+  (nextval('sequence_id'), 'Juan',				'Ciudad C', 					'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from usuarios where username='root')),
+  (nextval('sequence_id'), 'Pedro',				'Ciudad C', 					'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from usuarios where username='root')),
 
   -- URQUIZA B	
-  (nextval('sequence_id'), 'Juan',				'Urquiza B', 					'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from users where username='root')),
-  (nextval('sequence_id'), 'Pedro',				'Urquiza B', 					'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from users where username='root')),
+  (nextval('sequence_id'), 'Juan',				'Urquiza B', 					'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from usuarios where username='root')),
+  (nextval('sequence_id'), 'Pedro',				'Urquiza B', 					'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from usuarios where username='root')),
   
   -- CHICAGO A	
-  (nextval('sequence_id'), 'Juan',				'Chicago A', 					'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from users where username='root')),
-  (nextval('sequence_id'), 'Pedro',				'Chicago A', 					'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from users where username='root')),
+  (nextval('sequence_id'), 'Juan',				'Chicago A', 					'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from usuarios where username='root')),
+  (nextval('sequence_id'), 'Pedro',				'Chicago A', 					'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from usuarios where username='root')),
 
   -- BELGRANO B	
-  (nextval('sequence_id'), 'Juan',				'Belgrano D', 					'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from users where username='root')),
-  (nextval('sequence_id'), 'Pedro',				'Belgrano D', 					'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from users where username='root'));
+  (nextval('sequence_id'), 'Juan',				'Belgrano D', 					'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from usuarios where username='root')),
+  (nextval('sequence_id'), 'Pedro',				'Belgrano D', 					'50123456', 'Pasaje Belgrano 789', 		(select id from localidad where nombre='Ciudad Autonoma de Buenos Aires'), '011-34567890', 'carlos@example.com',  	now(),  (select id from usuarios where username='root'));
 
 
 
@@ -208,89 +208,89 @@ VALUES
   (nextval('sequence_id'), 
   (select id from persona where apellido='Tolomei' limit 1), 
   (select id from club where nombre='Club Universitario de Buenos Aires'), 
-  (select id from users where username='sensei')),
+  (select id from usuarios where username='sensei')),
   
   (nextval('sequence_id'), 
   (select id from persona where apellido='Rocha' limit 1), 
   (select id from club where nombre='Club Universitario de Buenos Aires'), 
-  (select id from users where username='sensei')),
+  (select id from usuarios where username='sensei')),
   
   -- CUBA A	
   (nextval('sequence_id'), 
   (select id from persona where apellido like 'Sosa%' limit 1), 
   (select id from club where nombre like '%niversitario%' limit 1), 
-  (select id from users where username='sensei')),
+  (select id from usuarios where username='sensei')),
   
   (nextval('sequence_id'), 
   (select id from persona where apellido like '%arrido%' limit 1), 
   (select id from club where nombre  like '%niversitario%' limit 1), 
-  (select id from users where username='sensei')),
+  (select id from usuarios where username='sensei')),
 
   -- ESTEBAN ECHEVERRIA B	
   (nextval('sequence_id'), 
   (select id from persona where apellido like 'Esteban%' and nombre like 'Juan%' limit 1), 
   (select id from club where nombre  like 'Esteban%' limit 1), 
-  (select id from users where username='sensei')),
+  (select id from usuarios where username='sensei')),
   
   (nextval('sequence_id'), 
   (select id from persona where apellido like 'Esteban%' and nombre like 'Pedro%' limit 1), 
   (select id from club where nombre  like 'Esteban%' limit 1), 
-  (select id from users where username='sensei')),
+  (select id from usuarios where username='sensei')),
   
     -- WILDE D
   (nextval('sequence_id'), 
   (select id from persona where apellido like 'Wilde%' and nombre like 'Juan%' limit 1), 
   (select id from club where nombre  like 'Esteban%' limit 1), 
-  (select id from users where username='sensei')),
+  (select id from usuarios where username='sensei')),
   
   (nextval('sequence_id'), 
   (select id from persona where apellido like 'Wilde%' and nombre like 'Pedro%' limit 1), 
   (select id from club where nombre  like 'Esteban%' limit 1), 
-  (select id from users where username='sensei')),
+  (select id from usuarios where username='sensei')),
 
     -- CIUDAD C
   (nextval('sequence_id'), 
   (select id from persona where apellido like '%Ciudad%' and nombre like 'Juan%' limit 1), 
   (select id from club where nombre  like 'Ciudad de%' limit 1), 
-  (select id from users where username='sensei')),
+  (select id from usuarios where username='sensei')),
   
   (nextval('sequence_id'), 
   (select id from persona where apellido like '%Ciudad%' and nombre like 'Pedro%' limit 1), 
   (select id from club where nombre  like 'Ciudad de%' limit 1), 
-  (select id from users where username='sensei')),
+  (select id from usuarios where username='sensei')),
   
    -- CHICAGO A
   (nextval('sequence_id'), 
   (select id from persona where apellido like '%Chicago%' and nombre like 'Juan%' limit 1), 
   (select id from club where nombre  like 'Chicago%' limit 1), 
-  (select id from users where username='sensei')),
+  (select id from usuarios where username='sensei')),
   
   (nextval('sequence_id'), 
   (select id from persona where apellido like 'Chicago%' and nombre like 'Pedro%' limit 1), 
   (select id from club where nombre like 'Chicago%' limit 1), 
-  (select id from users where username='sensei')),
+  (select id from usuarios where username='sensei')),
   
   -- URQIUZA B
   (nextval('sequence_id'), 
   (select id from persona where apellido like '%Urquiza%' and nombre like 'Juan%' limit 1), 
   (select id from club where nombre like 'Urquiza%' limit 1), 
-  (select id from users where username='sensei')),
+  (select id from usuarios where username='sensei')),
   
   (nextval('sequence_id'), 
   (select id from persona where apellido like 'Urquiza%' and nombre like 'Pedro%' limit 1), 
   (select id from club where nombre  like 'Urquiza%' limit 1), 
-  (select id from users where username='sensei')),
+  (select id from usuarios where username='sensei')),
   
  -- BELGRANO D
   (nextval('sequence_id'), 
   (select id from persona where apellido like '%Belgrano%' and nombre like 'Juan%' limit 1), 
   (select id from club where nombre  like 'Belgrano%' limit 1), 
-  (select id from users where username='sensei')),
+  (select id from usuarios where username='sensei')),
   
   (nextval('sequence_id'), 
   (select id from persona where apellido like 'Belgrano%' and nombre like 'Pedro%' limit 1), 
   (select id from club where nombre  like 'Belgrano%' limit 1), 
-  (select id from users where username='sensei'));
+  (select id from usuarios where username='sensei'));
   
 
 -- TORNEO, ETAPAS, ZONAS
@@ -307,7 +307,7 @@ VALUES
   1,
   make_date (2024, 03, 1) , 
   make_date (2024, 06, 30),
-  (select id from users where username='root'));
+  (select id from usuarios where username='root'));
 
 
 
@@ -318,7 +318,7 @@ VALUES
   (nextval('sequence_id'), 
   'Clasificación',  
   (select id from torneo where nombre='Apertura' and anio=2024 limit 1), 
-  (select id from users where username='root'));	
+  (select id from usuarios where username='root'));	
 
   -- ETAPA . Finales
 INSERT INTO etapa_torneo (id, nombre, torneo_id,  lastmodifieduser)																			
@@ -326,7 +326,7 @@ VALUES
   (nextval('sequence_id'), 
   'Finales',  
   (select id from torneo where nombre='Apertura' and anio=2024 limit 1), 
-  (select id from users where username='root'));	
+  (select id from usuarios where username='root'));	
 
   -- ZONA . Zona G
 INSERT INTO zona_torneo (id, nombre, torneo_id, etapa_torneo_id, lastmodifieduser)																			
@@ -335,7 +335,7 @@ VALUES
   'Zona G',  
   (select id from torneo where nombre='Apertura' and anio=2024 limit 1), 
   (select id from etapa_torneo where nombre='Clasificación'), 
-  (select id from users where username='root'));	
+  (select id from usuarios where username='root'));	
 
 
   
@@ -357,49 +357,49 @@ VALUES
   (nextval('sequence_id'),'CUBA A',
   (select id from club 		where nombre='Club Universitario de Buenos Aires'),
   (select id from torneo 	where nombre='Apertura' and anio=2024 limit 1),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
 
 	-- 2
   (nextval('sequence_id'),'CUBA B',
   (select id from club where nombre='Club Universitario de Buenos Aires'),
   (select id from torneo 	where nombre='Apertura' and anio=2024 limit 1),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   	-- 3
   (nextval('sequence_id'),'Esteban Echeverría B',
   (select id from club where nombre like 'Esteban%'),
   (select id from torneo 	where nombre='Apertura' and anio=2024 limit 1),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   -- 4
   (nextval('sequence_id'),'Wilde D',
   (select id from club where nombre like '%Wilde%'),
   (select id from torneo 	where nombre='Apertura' and anio=2024 limit 1),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   -- 5
   (nextval('sequence_id'),'Ciudad de Buenos Aires C',
   (select id from club where nombre like '%Ciudad de%'),
   (select id from torneo 	where nombre='Apertura' and anio=2024 limit 1),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   -- 6
   (nextval('sequence_id'),'Chicago A',
   (select id from club where nombre like '%Chicago%'),
   (select id from torneo 	where nombre='Apertura' and anio=2024 limit 1),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   -- 7
   (nextval('sequence_id'),'Urquiza B',
   (select id from club where nombre like '%Urquiza%'),
   (select id from torneo 	where nombre='Apertura' and anio=2024 limit 1),
-  (select id from users where username='root')), 
+  (select id from usuarios where username='root')), 
   
   -- 8
   (nextval('sequence_id'),'Belgrano D',
   (select id from club where nombre like '%Belgrano%'),
   (select id from torneo 	where nombre='Apertura' and anio=2024 limit 1),
-  (select id from users where username='root'));
+  (select id from usuarios where username='root'));
   
   --JUGADOR EQUIPO
 
@@ -420,26 +420,26 @@ VALUES
   (select id from jugador	where 		persona_id in (select id from persona where apellido like '%Tolomei%' limit 1)),
   (select id from equipo	where 		nombre='CUBA B'),
   (select id from condicion_jugador 	where nombre='Titular'),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   (nextval('sequence_id'),
   (select id from jugador	where 		persona_id in (select id from persona where apellido like '%Rocha%' limit 1)),
   (select id from equipo	where 		nombre='CUBA B'),
   (select id from condicion_jugador 	where nombre='Titular'),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   -- CUBA A
   (nextval('sequence_id'),
   (select id from jugador	where 		persona_id in (select id from persona where apellido like '%Sosa%' limit 1)),
   (select id from equipo	where 		nombre='CUBA A'),
   (select id from condicion_jugador 	where nombre='Titular'),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   (nextval('sequence_id'),
   (select id from jugador	where 		persona_id in (select id from persona where apellido like '%Garrido%' limit 1)),
   (select id from equipo	where 		nombre='CUBA A'),
   (select id from condicion_jugador 	where nombre='Titular'),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   
   -- ESTEBAN ECHEVERRIA B
@@ -447,52 +447,52 @@ VALUES
   (select id from jugador	where 		persona_id in (select id from persona where apellido like '%Esteban%' and nombre like 'Juan%' limit 1)),
   (select id from equipo	where 		nombre like 'Esteban%'),
   (select id from condicion_jugador 	where nombre='Titular'),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   (nextval('sequence_id'),
   (select id from jugador	where 		persona_id in (select id from persona where apellido like '%Esteban%' and nombre like 'Pedro%' limit 1)),
   (select id from equipo	where 		nombre like 'Esteban%'),
   (select id from condicion_jugador 	where nombre='Titular'),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   -- WILDE D
   (nextval('sequence_id'),
   (select id from jugador	where 		persona_id in (select id from persona where apellido like '%Wilde%' and nombre like 'Juan%' limit 1)),
   (select id from equipo	where 		nombre like 'Wilde%'),
   (select id from condicion_jugador 	where nombre='Titular'),
-  (select id from users where username='root')),  
+  (select id from usuarios where username='root')),  
   
   (nextval('sequence_id'),
   (select id from jugador	where 		persona_id in (select id from persona where apellido like '%Wilde%' and nombre like 'Pedro%' limit 1)),
   (select id from equipo	where 		nombre like 'Wilde%'),
   (select id from condicion_jugador 	where nombre='Titular'),
-  (select id from users where username='root')),  
+  (select id from usuarios where username='root')),  
   
    -- CHICAGO A
   (nextval('sequence_id'),
   (select id from jugador	where 		persona_id in (select id from persona where apellido like '%Chicago%' and nombre like 'Juan%' limit 1)),
   (select id from equipo	where 		nombre like 'Chicago%'),
   (select id from condicion_jugador 	where nombre='Titular'),
-  (select id from users where username='root')),  
+  (select id from usuarios where username='root')),  
   
   (nextval('sequence_id'),
   (select id from jugador	where 		persona_id in (select id from persona where apellido like '%Chicago%' and nombre like 'Pedro%' limit 1)),
   (select id from equipo	where 		nombre like 'Chicago%'),
   (select id from condicion_jugador 	where nombre='Titular'),
-  (select id from users where username='root')),  
+  (select id from usuarios where username='root')),  
   
    -- URQUIZA
   (nextval('sequence_id'),
   (select id from jugador	where 		persona_id in (select id from persona where apellido like '%Urquiza%' and nombre like 'Juan%' limit 1)),
   (select id from equipo	where 		nombre like 'Urquiza%'),
   (select id from condicion_jugador 	where nombre='Titular'),
-  (select id from users where username='root')),  
+  (select id from usuarios where username='root')),  
   
   (nextval('sequence_id'),
   (select id from jugador	where 		persona_id in (select id from persona where apellido like '%Urquiza%' and nombre like 'Pedro%' limit 1)),
   (select id from equipo	where 		nombre like 'Urquiza%'),
   (select id from condicion_jugador 	where nombre='Titular'),
-  (select id from users where username='root')),  
+  (select id from usuarios where username='root')),  
   
   
    -- BELGRANO
@@ -500,13 +500,13 @@ VALUES
   (select id from jugador	where 		persona_id in (select id from persona where apellido like '%Belgrano%' and nombre like 'Juan%' limit 1)),
   (select id from equipo	where 		nombre like 'Belgrano%'),
   (select id from condicion_jugador 	where nombre='Titular'),
-  (select id from users where username='root')),  
+  (select id from usuarios where username='root')),  
   
   (nextval('sequence_id'),
   (select id from jugador	where 		persona_id in (select id from persona where apellido like '%Belgrano%' and nombre like 'Pedro%' limit 1)),
   (select id from equipo	where 		nombre like 'Belgrano%'),
   (select id from condicion_jugador 	where nombre='Titular'),
-  (select id from users where username='root'));
+  (select id from usuarios where username='root'));
 
 
   
@@ -515,45 +515,46 @@ VALUES
   (nextval('sequence_id'),
   (select id from zona_torneo			where 		nombre = 'Zona G'),
   (select id from equipo				where 		nombre like 'CUBA A%'),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   (nextval('sequence_id'),
   (select id from zona_torneo			where 		nombre = 'Zona G'),
   (select id from equipo				where 		nombre like 'CUBA B%'),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   (nextval('sequence_id'),
   (select id from zona_torneo			where 		nombre = 'Zona G'),
   (select id from equipo				where 		nombre like 'Esteban%'),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   (nextval('sequence_id'),
   (select id from zona_torneo			where 		nombre = 'Zona G'),
   (select id from equipo				where 		nombre like 'Wilde%'),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   (nextval('sequence_id'),
   (select id from zona_torneo			where 		nombre = 'Zona G'),
   (select id from equipo				where 		nombre like 'Ciudad de%'),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   (nextval('sequence_id'),
   (select id from zona_torneo			where 		nombre = 'Zona G'),
   (select id from equipo				where 		nombre like 'Chicago%'),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   (nextval('sequence_id'),
   (select id from zona_torneo			where 		nombre = 'Zona G'),
   (select id from equipo				where 		nombre like 'Urquiza%'),
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
 
   (nextval('sequence_id'),
   (select id from zona_torneo			where 		nombre = 'Zona G'),
   (select id from equipo				where 		nombre like 'Belgrano%'),
-  (select id from users where username='root'));
+  (select id from usuarios where username='root'));
   
 
 
-SELECT id FROM fecha_torne WHERE etapa_torneo=(select id from etapa_torneo where nombre like 'Clasific%') and torneo = (select id from torneo where nombre = 'Apertura') AND orden=1
+-- SELECT id FROM fecha_torneo WHERE etapa_torneo=(select id from etapa_torneo where nombre like 'Clasific%') and torneo = (select id from torneo where nombre = 'Apertura') AND orden=1;
+
 
 
 
@@ -566,8 +567,7 @@ SELECT id FROM fecha_torne WHERE etapa_torneo=(select id from etapa_torneo where
   make_date (2024, 03, 1), 
   make_date (2024, 03, 4),
   '20:30', 
-  (select id from users where username='root')),
-  
+  (select id from usuarios where username='root')),
   
   (nextval('sequence_id'),
   (select id from etapa_torneo where nombre like 'Clasific%'),
@@ -576,7 +576,7 @@ SELECT id FROM fecha_torne WHERE etapa_torneo=(select id from etapa_torneo where
   make_date (2024, 03, 1)+7, 
   make_date (2024, 03, 4)+7,
   '20:30', 
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   (nextval('sequence_id'),
   (select id from etapa_torneo where nombre like 'Clasific%'),
@@ -585,7 +585,7 @@ SELECT id FROM fecha_torne WHERE etapa_torneo=(select id from etapa_torneo where
   make_date (2024, 03, 1)+2*7, 
   make_date (2024, 03, 4)+2*7,
   '20:30', 
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   (nextval('sequence_id'),
   (select id from etapa_torneo where nombre like 'Clasific%'),
@@ -594,7 +594,7 @@ SELECT id FROM fecha_torne WHERE etapa_torneo=(select id from etapa_torneo where
   make_date (2024, 03, 1)+3*7, 
   make_date (2024, 03, 4)+3*7,
   '20:30', 
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
 
   (nextval('sequence_id'),
   (select id from etapa_torneo where nombre like 'Clasific%'),
@@ -603,7 +603,7 @@ SELECT id FROM fecha_torne WHERE etapa_torneo=(select id from etapa_torneo where
   make_date (2024, 03, 1)+4*7, 
   make_date (2024, 03, 4)+4*7,
   '20:30', 
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
 
 
 (nextval('sequence_id'),
@@ -613,7 +613,7 @@ SELECT id FROM fecha_torne WHERE etapa_torneo=(select id from etapa_torneo where
   make_date (2024, 03, 1)+5*7, 
   make_date (2024, 03, 4)+5*7,
   '20:30', 
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
 
 (nextval('sequence_id'),
@@ -623,7 +623,7 @@ SELECT id FROM fecha_torne WHERE etapa_torneo=(select id from etapa_torneo where
   make_date (2024, 03, 1)+6*7, 
   make_date (2024, 03, 4)+6*7,
   '20:30', 
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   
   (nextval('sequence_id'),
@@ -633,7 +633,7 @@ SELECT id FROM fecha_torne WHERE etapa_torneo=(select id from etapa_torneo where
   make_date (2024, 03, 1)+7*7, 
   make_date (2024, 03, 4)+7*7,
   '20:30', 
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   
   (nextval('sequence_id'),
@@ -643,7 +643,7 @@ SELECT id FROM fecha_torne WHERE etapa_torneo=(select id from etapa_torneo where
   make_date (2024, 03, 1)+8*7, 
   make_date (2024, 03, 4)+8*7,
   '20:30', 
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
   (nextval('sequence_id'),
   (select id from etapa_torneo where nombre like 'Clasific%'),
@@ -652,7 +652,7 @@ SELECT id FROM fecha_torne WHERE etapa_torneo=(select id from etapa_torneo where
   make_date (2024, 03, 1)+9*7, 
   make_date (2024, 03, 4)+9*7,
   '20:30', 
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
 
   
@@ -663,7 +663,7 @@ SELECT id FROM fecha_torne WHERE etapa_torneo=(select id from etapa_torneo where
   make_date (2024, 03, 1)+10*7, 
   make_date (2024, 03, 4)+10*7,
   '20:30', 
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
 (nextval('sequence_id'),
   (select id from etapa_torneo where nombre like 'Clasific%'),
@@ -672,7 +672,7 @@ SELECT id FROM fecha_torne WHERE etapa_torneo=(select id from etapa_torneo where
   make_date (2024, 03, 1)+11*7, 
   make_date (2024, 03, 4)+11*7,
   '20:30', 
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
 (nextval('sequence_id'),
   (select id from etapa_torneo where nombre like 'Clasific%'),
@@ -681,7 +681,7 @@ SELECT id FROM fecha_torne WHERE etapa_torneo=(select id from etapa_torneo where
   make_date (2024, 03, 1)+12*7, 
   make_date (2024, 03, 4)+12*7,
   '20:30', 
-  (select id from users where username='root')),
+  (select id from usuarios where username='root')),
   
 (nextval('sequence_id'),
   (select id from etapa_torneo where nombre like 'Clasific%'),
@@ -690,7 +690,7 @@ SELECT id FROM fecha_torne WHERE etapa_torneo=(select id from etapa_torneo where
   make_date (2024, 03, 1)+14*7, 
   make_date (2024, 03, 4)+14*7,
   '20:30', 
-  (select id from users where username='root'));
+  (select id from usuarios where username='root'));
   
   
   COMMIT;

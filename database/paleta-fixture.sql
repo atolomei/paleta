@@ -32,7 +32,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%CUBA A%'),
 						(select id from equipo where nombre like '%CUBA B%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						
 						(nextval('sequence_id'), 
@@ -41,7 +41,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%CUBA B%'),
 						(select id from equipo where nombre like '%CUBA A%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						
 						-- FECHA 1y8 -> 3,4
@@ -51,7 +51,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Esteban%'),
 						(select id from equipo where nombre like '%Wilde%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						(nextval('sequence_id'), 
 						(SELECT id FROM fecha_torneo WHERE etapa_torneo_id=(select id from etapa_torneo where nombre like 'Clasific%') and torneo_id = (select id from torneo where nombre = 'Apertura') AND orden=8),
@@ -59,7 +59,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Wilde%'),
 						(select id from equipo where nombre like '%Esteban%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						-- FECHA 1y8 -> 5,6
 						(nextval('sequence_id'), 
@@ -68,7 +68,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Ciudad%'),
 						(select id from equipo where nombre like '%Chicago%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						(nextval('sequence_id'), 
 						(SELECT id FROM fecha_torneo WHERE etapa_torneo_id=(select id from etapa_torneo where nombre like 'Clasific%') and torneo_id = (select id from torneo where nombre = 'Apertura') AND orden=8),
@@ -76,7 +76,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Chicago%'),
 						(select id from equipo where nombre like '%Ciudad%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						-- FECHA 1y8 -> 7,8
 						(nextval('sequence_id'), 
@@ -85,7 +85,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Urquiza%'),
 						(select id from equipo where nombre like '%Belgrano%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						(nextval('sequence_id'), 
 						(SELECT id FROM fecha_torneo WHERE etapa_torneo_id=(select id from etapa_torneo where nombre like 'Clasific%') and torneo_id = (select id from torneo where nombre = 'Apertura') AND orden=8),
@@ -93,7 +93,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Belgrano%'),
 						(select id from equipo where nombre like '%Urquiza%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 
 						--1 CUBA A
 						--2 CUBA B
@@ -111,7 +111,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%CUBA B%'),
 						(select id from equipo where nombre like '%Esteban%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						(nextval('sequence_id'), 
 						(SELECT id FROM fecha_torneo WHERE etapa_torneo_id=(select id from etapa_torneo where nombre like 'Clasific%') and torneo_id = (select id from torneo where nombre = 'Apertura') AND orden=9),
@@ -119,7 +119,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Esteban%'),
 						(select id from equipo where nombre like '%CUBA A%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						-- FECHA 2y9  -> 4,5
 						(nextval('sequence_id'), 
@@ -128,7 +128,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Wilde%'),
 						(select id from equipo where nombre like '%Ciudad%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						(nextval('sequence_id'), 
 						(SELECT id FROM fecha_torneo WHERE etapa_torneo_id=(select id from etapa_torneo where nombre like 'Clasific%') and torneo_id = (select id from torneo where nombre = 'Apertura') AND orden=9),
@@ -136,7 +136,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Ciudad%'),
 						(select id from equipo where nombre like '%Wilde%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 
 						-- FECHA 2y9  -> 6,7
 						(nextval('sequence_id'), 
@@ -145,7 +145,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Chicago%'),
 						(select id from equipo where nombre like '%Urquiza%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						(nextval('sequence_id'), 
 						(SELECT id FROM fecha_torneo WHERE etapa_torneo_id=(select id from etapa_torneo where nombre like 'Clasific%') and torneo_id = (select id from torneo where nombre = 'Apertura') AND orden=9),
@@ -153,7 +153,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Urquiza%'),
 						(select id from equipo where nombre like '%Chicago%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						 -- FECHA 2y9 -> 8,1
 						(nextval('sequence_id'), 
@@ -162,7 +162,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Belgrano%'),
 						(select id from equipo where nombre like '%CUBA A%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						(nextval('sequence_id'), 
 						(SELECT id FROM fecha_torneo WHERE etapa_torneo_id=(select id from etapa_torneo where nombre like 'Clasific%') and torneo_id = (select id from torneo where nombre = 'Apertura') AND orden=9),
@@ -170,7 +170,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%CUBA A%'),
 						(select id from equipo where nombre like '%Belgrano%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						
 						
@@ -190,7 +190,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%CUBA A%'),
 						(select id from equipo where nombre like '%Wi%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						(nextval('sequence_id'), 
 						(SELECT id FROM fecha_torneo WHERE etapa_torneo_id=(select id from etapa_torneo where nombre like 'Clasific%') and torneo_id = (select id from torneo where nombre = 'Apertura') AND orden=10),
@@ -198,7 +198,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Wi%'),
 						(select id from equipo where nombre like '%CUBA A%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						-- FECHA 3y10 -> 3,6
 						(nextval('sequence_id'), 
@@ -207,7 +207,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Esteb%'),
 						(select id from equipo where nombre like '%Chica%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						(nextval('sequence_id'), 
 						(SELECT id FROM fecha_torneo WHERE etapa_torneo_id=(select id from etapa_torneo where nombre like 'Clasific%') and torneo_id = (select id from torneo where nombre = 'Apertura') AND orden=10),
@@ -215,7 +215,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Chica%'),
 						(select id from equipo where nombre like '%Esteb%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 
 						-- FECHA 3y10 -> 5,8
 						(nextval('sequence_id'), 
@@ -224,7 +224,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Ciudad%'),
 						(select id from equipo where nombre like '%Belg%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						(nextval('sequence_id'), 
 						(SELECT id FROM fecha_torneo WHERE etapa_torneo_id=(select id from etapa_torneo where nombre like 'Clasific%') and torneo_id = (select id from torneo where nombre = 'Apertura') AND orden=10),
@@ -232,7 +232,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Belg%'),
 						(select id from equipo where nombre like '%Ciudad%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						 -- FECHA 3y10 -> 7,2
 						(nextval('sequence_id'), 
@@ -241,7 +241,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Urquiza%'),
 						(select id from equipo where nombre like '%CUBA B%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						(nextval('sequence_id'), 
 						(SELECT id FROM fecha_torneo WHERE etapa_torneo_id=(select id from etapa_torneo where nombre like 'Clasific%') and torneo_id = (select id from torneo where nombre = 'Apertura') AND orden=10),
@@ -249,7 +249,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%CUBA B%'),
 						(select id from equipo where nombre like '%Urquiza%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						
 						
@@ -269,7 +269,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%CUBA B%'),
 						(select id from equipo where nombre like '%Ciu%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						(nextval('sequence_id'), 
 						(SELECT id FROM fecha_torneo WHERE etapa_torneo_id=(select id from etapa_torneo where nombre like 'Clasific%') and torneo_id = (select id from torneo where nombre = 'Apertura') AND orden=11),
@@ -277,7 +277,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Ciu%'),
 						(select id from equipo where nombre like '%CUBA B%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						-- FECHA 4y11 -> 4,7
 						(nextval('sequence_id'), 
@@ -286,7 +286,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Wil%'),
 						(select id from equipo where nombre like '%Urq%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						(nextval('sequence_id'), 
 						(SELECT id FROM fecha_torneo WHERE etapa_torneo_id=(select id from etapa_torneo where nombre like 'Clasific%') and torneo_id = (select id from torneo where nombre = 'Apertura') AND orden=11),
@@ -294,7 +294,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Chica%'),
 						(select id from equipo where nombre like '%Esteb%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 
 						-- FECHA 4y11 -> 6,1
 						(nextval('sequence_id'), 
@@ -303,7 +303,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Chic%'),
 						(select id from equipo where nombre like '%CUBA A%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						(nextval('sequence_id'), 
 						(SELECT id FROM fecha_torneo WHERE etapa_torneo_id=(select id from etapa_torneo where nombre like 'Clasific%') and torneo_id = (select id from torneo where nombre = 'Apertura') AND orden=11),
@@ -311,7 +311,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%CUBA A%'),
 						(select id from equipo where nombre like '%Chica%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						 -- FECHA 4y11 -> 8,3
 						(nextval('sequence_id'), 
@@ -320,7 +320,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Belgrano%'),
 						(select id from equipo where nombre like '%Esteban%'),
-						(select id from users where username='root')),
+						(select id from usuarios where username='root')),
 						
 						(nextval('sequence_id'), 
 						(SELECT id FROM fecha_torneo WHERE etapa_torneo_id=(select id from etapa_torneo where nombre like 'Clasific%') and torneo_id = (select id from torneo where nombre = 'Apertura') AND orden=11),
@@ -328,7 +328,7 @@ VALUES
 						(select id from zona_torneo where torneo_id=(select id from torneo where nombre = 'Apertura') AND nombre='Zona G'),
 						(select id from equipo where nombre like '%Esteban%'),
 						(select id from equipo where nombre like '%Belgrano%'),
-						(select id from users where username='root'));
+						(select id from usuarios where username='root'));
 						
 					
 						
