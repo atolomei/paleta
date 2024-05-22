@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuarios")
 public class Usuario extends PaletaObject {
 
 	@Column(name="username")

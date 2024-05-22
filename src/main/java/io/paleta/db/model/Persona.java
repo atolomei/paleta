@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -36,6 +37,14 @@ public class Persona extends PaletaObject implements Named {
 	
 	@Column(name="email")
 	private String email;
+	
+	
+	@Column(name="usuario")
+	@OneToOne(fetch = FetchType.LAZY, targetEntity = Usuario.class)
+	@JoinColumn(name = "usuario_id", nullable=true) 
+	private Usuario usuario;
+	
+	
 	
 	@Column(name="fecha_nacimiento")
 	private OffsetDateTime fechaNacimiento;
